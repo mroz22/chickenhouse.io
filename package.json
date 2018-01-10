@@ -1,5 +1,20 @@
 {
 	"devDependencies": {
 		"lerna": "^2.6.0"
+	},
+	"changelog": {
+		"repo": "babel/babel",
+		"labels": {
+			"PR: Spec Compliancy": ":eyeglasses: Spec Compliancy",
+			"PR: Breaking Change": ":boom: Breaking Change",
+			"PR: New Feature": ":rocket: New Feature",
+			"PR: Bug Fix": ":bug: Bug Fix",
+			"PR: Polish": ":nail_care: Polish",
+			"PR: Docs": ":memo: Documentation",
+			"PR: Internal": ":house: Internal"
+		}
+	},
+	"scripts": {
+		"app-dev": "cd ./packages/app && npm run dev "
 	}
 }

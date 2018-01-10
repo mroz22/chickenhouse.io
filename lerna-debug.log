@@ -9,13 +9,51 @@
 8 info current version 0.0.0
 9 silly isDetachedHead
 10 silly getCurrentBranch
-11 error initialize caught error
-12 error Error: fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.
-12 error Use '--' to separate paths from revisions, like this:
-12 error 'git <command> [<revision>...] -- [<file>...]'
-12 error
-12 error     at Function.module.exports.sync (/home/mroz/.nvm/versions/node/v9.3.0/lib/node_modules/lerna/node_modules/execa/index.js:303:26)
-12 error     at Function.execSync (/home/mroz/.nvm/versions/node/v9.3.0/lib/node_modules/lerna/lib/ChildProcessUtilities.js:59:30)
-12 error     at Function.getCurrentBranch (/home/mroz/.nvm/versions/node/v9.3.0/lib/node_modules/lerna/lib/GitUtilities.js:194:59)
-12 error     at Function.isDetachedHead (/home/mroz/.nvm/versions/node/v9.3.0/lib/node_modules/lerna/lib/GitUtilities.js:45:37)
-12 error     at PublishCommand.initialize (/home/mroz/.nvm/versions/node/v9.3.0/lib/node_modules/lerna/lib/commands/PublishCommand.js:242:36)
+11 verbose getCurrentBranch master
+12 verbose isDetachedHead false
+13 silly getCurrentBranch
+14 verbose getCurrentBranch master
+15 silly getUpdates
+16 info Checking for updated packages...
+17 silly hasTags
+18 verbose hasTags false
+19 info Comparing with initial commit.
+20 verbose updated Chickenhouse.io
+21 info Checking for prereleased packages...
+22 silly collectDependents
+23 silly isPackageDependentOf Chickenhouse.io Chickenhouse.io
+24 silly collectUpdates
+25 verbose has filtered update Chickenhouse.io
+26 silly initialize success
+27 silly execute attempt
+28 silly addFile /home/mroz/Projects/lerna/lerna.json
+29 silly runScriptSync preversion Chickenhouse.io
+30 silly runScriptSync version Chickenhouse.io
+31 silly addFile /home/mroz/Projects/lerna/packages/app/package.json
+32 silly commit v0.0.1
+33 verbose commit [ 'commit', '--no-gpg-sign', '-m', 'v0.0.1' ]
+34 silly addTag v0.0.1
+35 silly runScriptSync postversion Chickenhouse.io
+36 info publish Publishing packages to npm...
+37 silly existsSync /home/mroz/Projects/lerna/packages/app/scripts/prepublish.js
+38 verbose execScript No prepublish script found at /home/mroz/Projects/lerna/packages/app/scripts/prepublish.js
+39 info git Pushing tags...
+40 silly pushWithTags [ 'origin', [ 'v0.0.1' ] ]
+41 silly getCurrentBranch
+42 verbose getCurrentBranch master
+43 error execute caught error
+44 error Error: fatal: 'origin' does not appear to be a git repository
+44 error fatal: Could not read from remote repository.
+44 error
+44 error Please make sure you have the correct access rights
+44 error and the repository exists.
+44 error
+44 error     at Function.module.exports.sync (/home/mroz/.nvm/versions/node/v9.3.0/lib/node_modules/lerna/node_modules/execa/index.js:303:26)
+44 error     at Function.execSync (/home/mroz/.nvm/versions/node/v9.3.0/lib/node_modules/lerna/lib/ChildProcessUtilities.js:59:30)
+44 error     at Function.pushWithTags (/home/mroz/.nvm/versions/node/v9.3.0/lib/node_modules/lerna/lib/GitUtilities.js:155:39)
+44 error     at /home/mroz/.nvm/versions/node/v9.3.0/lib/node_modules/lerna/lib/commands/PublishCommand.js:351:36
+44 error     at PublishCommand.npmUpdateAsLatest (/home/mroz/.nvm/versions/node/v9.3.0/lib/node_modules/lerna/lib/commands/PublishCommand.js:826:16)
+44 error     at /home/mroz/.nvm/versions/node/v9.3.0/lib/node_modules/lerna/lib/commands/PublishCommand.js:343:16
+44 error     at /home/mroz/.nvm/versions/node/v9.3.0/lib/node_modules/lerna/lib/commands/PublishCommand.js:817:9
+44 error     at /home/mroz/.nvm/versions/node/v9.3.0/lib/node_modules/lerna/node_modules/async/lib/async.js:726:13
+44 error     at /home/mroz/.nvm/versions/node/v9.3.0/lib/node_modules/lerna/node_modules/async/lib/async.js:52:16
