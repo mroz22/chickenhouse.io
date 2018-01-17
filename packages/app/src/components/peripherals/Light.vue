@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <mu-switch label="Světlo" :value="lightOn" @change="updateLightState()"/><br/>
+      <mu-switch label="Light" :value="lightOn" @change="updateLightState()"/><br/>
     </div>
   </div>
 </template>

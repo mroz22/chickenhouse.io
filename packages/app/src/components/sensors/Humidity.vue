@@ -1,7 +1,6 @@
 <template>
   <div>
-      Vlhkost {{ humidity }} %
-    {{ currentUserCustom }}
+      Humidity {{ humidity }} %
   </div>
 </template>
 

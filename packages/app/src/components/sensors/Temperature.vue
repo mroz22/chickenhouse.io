@@ -1,6 +1,6 @@
 <template>
   <div>
-    Teplota {{ temperature}} °C
+    Temperature {{ temperature}} °C
   </div>
 </template>
 
