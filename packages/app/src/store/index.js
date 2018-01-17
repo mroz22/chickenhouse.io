@@ -9,7 +9,8 @@ const store = new Vuex.Store({
   state: {
     currentUser: null, // Will be bound as an object; user object is provided by firebase auth
     currentUserCustom: null, // userCustom object contains additional userdata stored in firebase database
-    users: [],
+    usersArr: [],
+    usersObj: null,
     temperature: db.ref('temperature'),
     opened: db.ref('opened'),
     humidity: db.ref('humidity'),
@@ -18,9 +19,6 @@ const store = new Vuex.Store({
   actions: {
     setCurrentUserCustomRef: firebaseAction(({bindFirebaseRef}, ref) => {
       bindFirebaseRef('currentUserCustom', ref)
-    }),
-    setUsersRef: firebaseAction(({bindFirebaseRef}, ref) => {
-      bindFirebaseRef('users', ref)
     }),
     clearUserRef: firebaseAction(({unbindFirebaseRef}) => {
       unbindFirebaseRef('userCustom')
@@ -36,6 +34,12 @@ const store = new Vuex.Store({
     }),
     setLightOnRef: firebaseAction(({bindFirebaseRef}, ref) => {
       bindFirebaseRef('lightOn', ref)
+    }),
+    setUsersArrRef: firebaseAction(({bindFirebaseRef}, ref) => {
+      bindFirebaseRef('users', ref)
+    }),
+    setUsersObjRef: firebaseAction(({bindFirebaseRef}, ref) => {
+      bindFirebaseRef('users', ref)
     })
   },
   mutations: {
@@ -51,7 +55,8 @@ const store = new Vuex.Store({
     lightOn: state => state.lightOn['.value'],
     currentUser: state => state.currentUser,
     currentUserCustom: state => state.currentUserCustom,
-    users: state => state.users
+    usersArr: state => state.usersArr,
+    usersObj: state => state.usersObj
   }
 })
 

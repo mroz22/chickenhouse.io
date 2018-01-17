@@ -45,7 +45,7 @@
 
   export default {
     computed: {
-      ...mapGetters(['users'])
+      ...mapGetters(['usersArr', 'usersObj'])
     },
     methods: {
       updateObject (uid, isAdmin) {
@@ -53,7 +53,10 @@
       }
     },
     created () {
-      this.$store.dispatch('setUsersRef', db.ref(`users`))
+      this.$store.dispatch('setUsersArrRef', db.ref(`usersArr`))
+      this.$store.dispatch('setUsersObjRef', db.ref(`usersObj`))
+      console.log(this.usersArr)
+      console.log(this.usersObj)
     }
   }
 </script>

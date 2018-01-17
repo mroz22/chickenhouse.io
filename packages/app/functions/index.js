@@ -4,7 +4,7 @@ const admin = require('firebase-admin')
 admin.initializeApp(functions.config().firebase)
 
 exports.createProfile = functions.auth.user().onCreate(event => {
-  return admin.database().ref(`/user/${event.data.uid}`).set({
+  return admin.database().ref(`/users/${event.data.uid}`).set({
     email: event.data.email,
     isAdmin: false
   })
