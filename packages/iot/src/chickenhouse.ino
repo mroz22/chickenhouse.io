@@ -7,9 +7,8 @@
 #define DHTTYPE   DHT22       // DHT type (DHT11, DHT22)
 #define DHTPIN    D4          // Broche du DHT / DHT Pin
 
-const char* ssid     = "Internet U veverky";
-const char* password = "procbychomsenetesili";
-//const char* host = "XXX.XXX.XXX.XXX";
+const char* ssid     = #wifissid#;
+const char* password = #wifipassword#;
 const char* host = "10.0.0.9";
 const int   port = 3001;
 const int   watchdog = 60000;

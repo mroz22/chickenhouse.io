@@ -1,12 +1,7 @@
 <template>
   <div>
     <h1>Users</h1>
-    {{ users }}
-    <!--
-    :fixedFooter="fixedFooter" :fixedHeader="fixedHeader" :height="height"
-              :enableSelectAll="enableSelectAll" :multiSelectable="multiSelectable"
-              :selectable="selectable" :showCheckbox="showCheckbox"
-    -->
+
     <mu-table>
       <mu-thead slot="header">
         <mu-tr>
@@ -16,20 +11,20 @@
         </mu-tr>
       </mu-thead>
       <mu-tbody>
-        <mu-tr v-for="(user, uid) in users"  :key="uid" :selected="user.selected">
-          <mu-td>{{ uid }} </mu-td>
+        <mu-tr v-for="(user, index) in users" :key="user.uid" :selected="user.selected">
+          <mu-td>{{ index + 1 }}   </mu-td>
           <mu-td>
             {{user.email }}
           </mu-td>
           <mu-td>
             <mu-checkbox :label="user.isAdmin ? 'Ano' : 'Ne'" v-model="user.isAdmin"
-            v-on:change="updateObject(uid, !user.isAdmin)"/>
+            v-on:change="updateObject(user, !user.isAdmin)"/>
           </mu-td>
         </mu-tr>
       </mu-tbody>
       <mu-tfoot slot="footer">
         <mu-tr>
-          <mu-td>ID</mu-td>
+          <mu-td>#</mu-td>
           <mu-td>Email</mu-td>
           <mu-td>Admin</mu-td>
         </mu-tr>
@@ -45,18 +40,15 @@
 
   export default {
     computed: {
-      ...mapGetters(['usersArr', 'usersObj'])
+      ...mapGetters(['users'])
     },
     methods: {
-      updateObject (uid, isAdmin) {
-        db.ref(`user/${uid}`).update({ isAdmin: isAdmin })
+      updateObject (user, isAdmin) {
+        db.ref(`users/${user['.key']}`).update({ isAdmin: isAdmin })
       }
     },
     created () {
-      this.$store.dispatch('setUsersArrRef', db.ref(`usersArr`))
-      this.$store.dispatch('setUsersObjRef', db.ref(`usersObj`))
-      console.log(this.usersArr)
-      console.log(this.usersObj)
+      this.$store.dispatch('setUsersRef', db.ref(`users`))
     }
   }
 </script>

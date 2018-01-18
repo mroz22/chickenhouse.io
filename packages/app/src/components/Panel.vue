@@ -8,10 +8,10 @@
 </template>
 
 <script>
-  import Humidity from '@/components/sensors/Humidity'
-  import Temperature from '@/components/sensors/Temperature'
-  import Door from '@/components/peripherals/Door'
-  import Light from '@/components/peripherals/Light'
+  import Humidity from '@/modules/sensors/components/Humidity'
+  import Temperature from '@/modules/sensors/components/Temperature'
+  import Door from '@/modules/peripherals/components/Door'
+  import Light from '@/modules/peripherals/components/Light'
 
   export default {
     name: 'Monitor',

@@ -6,7 +6,7 @@
 
 <script>
   import { mapGetters } from 'vuex'
-  import { db } from '../../initFirebase'
+  import { db } from '../../../initFirebase'
 
   export default {
     computed: mapGetters([ 'temperature' ]),

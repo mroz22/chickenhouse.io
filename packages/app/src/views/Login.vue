@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1> Login </h1>
+    {{ currentUser }}
     <div id="firebaseui-auth-container" />
   </div>
 </template>
@@ -53,10 +54,11 @@ export default {
     ui.start('#firebaseui-auth-container', uiConfig)
   },
   computed: {
-    ...mapState(['user'])
+    ...mapState(['currentUser'])
   },
   watch: {
-    user (val) {
+    currentUser (val) {
+      console.log(val)
       if (val) {
         if (this.$router.currentRoute.query.redirect) {
           this.$router.replace(this.$router.currentRoute.query.redirect)

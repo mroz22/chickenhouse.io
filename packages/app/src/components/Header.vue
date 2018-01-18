@@ -47,7 +47,7 @@ export default {
   }),
   computed: {
     ...mapState({
-      currentUser: 'currentUser'
+      currentUser: state => state.users.currentUser
     })
   },
   watch: {

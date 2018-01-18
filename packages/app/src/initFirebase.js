@@ -25,10 +25,10 @@ const ui = new firebaseui.auth.AuthUI(firebase.auth())
  * This callback is called when firebase.auth() detects user changes,
  * so just update the vuex store with the new user object.
  */
-firebase.auth().onAuthStateChanged(user => {
-  store.commit('UPDATE_CURRENT_USER', user)
-  if (user) {
-    store.dispatch('setCurrentUserCustomRef', db.ref('users').orderByChild('uid').equalTo(user.uid))
+firebase.auth().onAuthStateChanged(currentUser => {
+  store.commit('UPDATE_CURRENT_USER', currentUser)
+  if (currentUser) {
+    store.dispatch('setCurrentUserCustomRef', db.ref('users').orderByChild('uid').equalTo(currentUser.uid))
   } else {
     // store.dispatch('clearUserRef')
   }
