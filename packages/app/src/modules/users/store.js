@@ -1,4 +1,4 @@
-import { firebaseMutations, firebaseAction } from 'vuexfire'
+import { firebaseAction } from 'vuexfire'
 // import { db } from '@/initFirebase'
 
 export default {
@@ -9,6 +9,7 @@ export default {
   },
   actions: {
     setCurrentUserCustomRef: firebaseAction(({bindFirebaseRef}, ref) => {
+      console.log(1)
       bindFirebaseRef('currentUserCustom', ref)
     }),
     clearUserRef: firebaseAction(({unbindFirebaseRef}) => {
@@ -22,8 +23,7 @@ export default {
   mutations: {
     UPDATE_CURRENT_USER (state, user, rootState) {
       state.currentUser = user
-    },
-    ...firebaseMutations
+    }
   },
   getters: {
     currentUser: state => state.currentUser,

@@ -1,4 +1,4 @@
-import { firebaseMutations, firebaseAction } from 'vuexfire'
+import { firebaseAction } from 'vuexfire'
 import { db } from '@/initFirebase'
 
 export default {
@@ -15,9 +15,7 @@ export default {
       bindFirebaseRef('humidity', ref)
     })
   },
-  mutations: {
-    ...firebaseMutations
-  },
+  mutations: {},
   getters: {
     temperature: state => state.temperature['.value'],
     humidity: state => state.humidity['.value']

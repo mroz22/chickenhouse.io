@@ -1,4 +1,4 @@
-import { firebaseMutations, firebaseAction } from 'vuexfire'
+import { firebaseAction } from 'vuexfire'
 import { db } from '@/initFirebase'
 
 export default {
@@ -14,9 +14,7 @@ export default {
       bindFirebaseRef('lightOn', ref)
     })
   },
-  mutations: {
-    ...firebaseMutations
-  },
+  mutations: {},
   getters: {
     opened: state => Boolean(state.opened['.value']),
     lightOn: state => state.lightOn['.value']

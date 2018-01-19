@@ -28,7 +28,7 @@ const ui = new firebaseui.auth.AuthUI(firebase.auth())
 firebase.auth().onAuthStateChanged(currentUser => {
   store.commit('UPDATE_CURRENT_USER', currentUser)
   if (currentUser) {
-    store.dispatch('setCurrentUserCustomRef', db.ref('users').orderByChild('uid').equalTo(currentUser.uid))
+    store.dispatch('setCurrentUserCustomRef', db.ref(`users/${currentUser['.key']}`))
   } else {
     // store.dispatch('clearUserRef')
   }

@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1>Users</h1>
-
     <mu-table>
       <mu-thead slot="header">
         <mu-tr>
@@ -11,8 +10,8 @@
         </mu-tr>
       </mu-thead>
       <mu-tbody>
-        <mu-tr v-for="(user, index) in users" :key="user.uid" :selected="user.selected">
-          <mu-td>{{ index + 1 }}   </mu-td>
+        <mu-tr v-for="user in users" :key="user['.key']" :selected="user.selected">
+          <mu-td> </mu-td>
           <mu-td>
             {{user.email }}
           </mu-td>

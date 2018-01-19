@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { firebaseMutations } from 'vuexfire'
 
 import users from '@/modules/users/store'
 import peripherals from '@/modules/peripherals/store'
@@ -12,6 +13,9 @@ const store = new Vuex.Store({
     users,
     peripherals,
     sensors
+  },
+  mutations: {
+    ...firebaseMutations
   }
 })
 
