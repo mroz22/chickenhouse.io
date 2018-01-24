@@ -1,6 +1,6 @@
 {
   "rules": {
     ".read": true,
-    ".write": true
+    ".write": "root.child('users').child(auth.uid).child('isAdmin').val() == true"
   }
 }

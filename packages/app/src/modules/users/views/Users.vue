@@ -36,14 +36,19 @@
 <script>
   import { mapGetters } from 'vuex'
   import { db } from '@/initFirebase'
+  import { FirebaseError } from '@/errors'
 
   export default {
     computed: {
       ...mapGetters(['users'])
     },
     methods: {
-      updateObject (user, isAdmin) {
-        db.ref(`users/${user['.key']}`).update({ isAdmin: isAdmin })
+      async updateObject (user, isAdmin) {
+        try {
+          await db.ref(`users/${user['.key']}`).update({ isAdmin: isAdmin })
+        } catch (err) {
+          this.$emit('error', new FirebaseError(err))
+        }
       }
     },
     created () {
