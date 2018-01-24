@@ -1,11 +1,11 @@
 <template>
 <div>
-  <h1>My Profile</h1>
+  <h1>Profile</h1>
   <hr />
 
   <h3>{{ currentUser.displayName }} </h3>
   <p>email: {{ currentUser.email}}</p>
-  <p>admin: {{ currentUserCustom.isAdmin ? "Yes" : "No" }}  </p>
+  <p>admin: {{ currentUser.isAdmin ? "Yes" : "No" }}  </p>
 </div>
 </template>
 
@@ -14,7 +14,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters(['currentUser', 'currentUserCustom'])
+    ...mapGetters(['currentUser'])
   }
 }
 </script>
