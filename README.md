@@ -3,6 +3,7 @@
 Chickenhouse.io is a freetime side project that serves few pusposes:
 1. Trying out new technologies
 2. Fun 
+3. Bringing peace to galaxy
 
 Chickenhouse.io project brings IoT to your courtyard. It allows you to control your coop 
 from any internet connected device (smartphone, laptop). Your chickencoop on stereoids.
@@ -12,6 +13,7 @@ from any internet connected device (smartphone, laptop). Your chickencoop on ste
 2. Serverless architecture using firebase
 3. Offline ready, progressive web app (PWA)
 4. IoT using Arduino platform
+5. Lerna for repository management
 
 ## [Online Demo](https://chickenhouse-fa834.firebaseapp.com/)
 
