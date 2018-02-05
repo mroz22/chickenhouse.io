@@ -15,29 +15,22 @@ from any internet connected device (smartphone, laptop). Your chickencoop on ste
 
 ## [Online Demo](https://chickenhouse-fa834.firebaseapp.com/)
 
-## Install and run 
+## Install and run
+
+Modify .env.example to .env and fill your own config. 
 
 ``` bash
-# install dependencies
-yarn # or `npm install`
+# install core dependencies
+npm install
 
-# serve with hot reload at localhost:8080
-yarn dev # or `npm run dev`
+# bootstrap package dependencies with lerna
+lerna bootstrap
 
-# build for production with minification and prerendering
-yarn build # or `npm run build`
+# cd into app packages 
+cd packages/app
 
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-yarn run unit # or `npm run unit`
-
-# run e2e tests
-yarn run e2e # or `npm run e2e`
-
-# run all tests
-yarn test # or `npm test`
+# run dev server
+npm run dev 
 ```
 ## Credits
 Based on [DaxChen/vue-firebase-starter](https://github.com/DaxChen/vue-firebase-starter)
