@@ -2,7 +2,7 @@
 // http://nightwatchjs.org/guide#usage
 
 module.exports = {
-  'default e2e tests': function (browser) {
+  'enter app': function (browser) {
     // automatically uses dev Server port from /config.index.js
     // default: http://localhost:8080
     // see nightwatch.conf.js
@@ -11,9 +11,19 @@ module.exports = {
     browser
       .url(devServer)
       .waitForElementVisible('#app', 5000)
-      .assert.elementPresent('.hello')
-      .assert.containsText('h1', 'Welcome to Your Vue.js App')
-      .assert.elementCount('img', 1)
-      .end()
+      .assert.elementPresent('.mu-appbar')
+  },
+
+  '404 page': function (browser) {
+    const devServer = browser.globals.devServerURL
+    browser.url(`${devServer}/foo`);
+    browser.expect.element('h1').text.to.equal('404 not found')
+    browser.end()
+  },
+
+  'humidity': function (browser) {
+    const devServer = browser.globals.devServerURL
+    browser.url(`${devServer}`).pause(1000)
+    browser.expect.element('#humidity').text.to.match(/Humidity [0-9]+/g)
   }
 }

@@ -3,6 +3,7 @@
 // polyfills
 import 'es6-promise/auto'
 import 'weakmap' // for vuexfire, using (imports-loader)
+import firebase from 'firebase'
 
 import Vue from 'vue'
 import App from './App'
@@ -23,8 +24,23 @@ import 'muse-ui/dist/muse-ui.css'
 import './muse-ui-theme.less'
 Vue.use(MuseUI)
 
+/**
+ * Sync store.state.user with firebase.auth().currentUser
+ *
+ * This callback is called when firebase.auth() detects user changes,
+ * so just update the vuex store with the new user object.
+ */
+firebase.auth().onAuthStateChanged(currentUser => {
+  store.commit('UPDATE_CURRENT_USER', currentUser)
+  if (currentUser) {
+    store.dispatch('setCurrentUserCustomRef', db.ref(`users/${currentUser['.key']}`))
+  } else {
+    // store.dispatch('clearUserRef')
+  }
+})
+
 // firebase
-import './initFirebase'
+import { db } from './initFirebase'
 
 Vue.config.productionTip = false
 

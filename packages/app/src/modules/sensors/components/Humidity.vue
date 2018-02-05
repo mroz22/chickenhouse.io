@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="humidity">
       Humidity {{ humidity }} %
   </div>
 </template>

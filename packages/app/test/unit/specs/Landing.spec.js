@@ -1,11 +1,10 @@
 import Vue from 'vue'
-import Hello from '@/views/Landing'
+import Landing from '@/views/Landing'
 
 describe('Landing.vue', () => {
-  it('should render correct contents', () => {
-    const Constructor = Vue.extend(Hello)
+  it('should render landing', () => {
+    const Constructor = Vue.extend(Landing)
     const vm = new Constructor().$mount()
-    expect(vm.$el.querySelector('.hello h1').textContent)
-      .to.equal('Welcome to Your Vue.js App')
+    expect(vm.$el.querySelector('.landing')).to.exist
   })
 })
