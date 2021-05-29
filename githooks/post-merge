@@ -1,0 +1,8 @@
+#!/bin/sh
+
+CHANGED=`git diff HEAD@{1} --stat -- $GIT_DIR/../yarn.lock | wc -l`
+if [ $CHANGED -gt 0 ];
+then
+    echo "yarn.lock has changed!"
+    yarn
+fi

@@ -1,0 +1,19 @@
+{
+  "name": "chicken-citadel",
+  "private": true,
+  "workspaces": [
+    "raspberry",
+    "web",
+    "functions"
+  ],
+  "dependencies": {},
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "start": "concurrently \"firebase emulators:start --only auth,functions,firestore --import=./data --export-on-exit \" \"yarn workspace web start\""
+  },
+  "devDependencies": {
+    "concurrently": "^6.1.0"
+  }
+}
