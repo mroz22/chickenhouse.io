@@ -5,9 +5,9 @@ import { getSunrise, getSunset } from "sunrise-sunset-js";
 import { useParams } from 'react-router-dom';
 
 import { Cam, Button } from "../../components";
-import { PayButton } from '../../modules';
-import  {useDb} from '../../hooks';
-import { firebase} from '../../db';
+import { PayButton, Door, Light } from '../../modules';
+import { useDb } from '../../hooks';
+import { firebase } from '../../db';
 
 const sunset = getSunset(49.33861111, 17.99611111);
 const sunrise = getSunrise(49.33861111, 17.99611111);
@@ -67,23 +67,7 @@ interface Props {
 
 export const Hut: React.FC<Props> = ({ user }) => {
 
-    const { data, ref} = useDb();
-
-    const moveUp = () => {
-        ref.update({ door_movement: 1 });
-    };
-
-    const moveDown = () => {
-        ref.update({ door_movement: -1 });
-    };
-
-    const stop = () => {
-        ref.update({ door_movement: 0, door_next_state: 0 });
-    };
-
-    const toggleLight = (value) => {
-        ref.update({ lightState: value });
-    };
+    const { data, ref } = useDb();
 
     const reboot = () => {
         ref.update({ reboot_command: true });
@@ -111,46 +95,15 @@ export const Hut: React.FC<Props> = ({ user }) => {
             <Row>
                 <Col>
                     <Section>
-                        <h2>Light</h2>
-                        <div>
-                            {data && data.lightState ? "Light is on" : "Light is off"}{" "}
-                        </div>
-                        <Button
-                            color="lightseagreen"
-                            onClick={() => toggleLight(!data.lightState)}
-                            isDisabled={!user}
-                        >
-                            Toggle light
-                        </Button>
+                        <Light data={data} ref={ref} user={user} />
                     </Section>
 
                     <Section>
-                        <h2>
-                            Door ({data && data.door_movement === 0 && data.door_position}
-                            {data && data.door_movement === 1 && "Moving up"}
-                            {data && data.door_movement === -1 && "Moving down"})
-                        </h2>
 
                         <div>sunset: {sunset.toLocaleTimeString()}</div>
                         <div>sunrise: {sunrise.toLocaleTimeString()}</div>
 
-                        <>
-                            {data && data.door_movement === 0 && (
-                                <>
-                                    {data.door_position !== "top" && (
-                                        <Button onClick={moveUp} isDisabled={!user}>up</Button>
-                                    )}
-                                    {data.door_position !== "bottom" && (
-                                        <Button onClick={moveDown} isDisabled={!user}>down</Button>
-                                    )}
-                                </>
-                            )}
-                            {data && data.door_movement !== 0 && (
-                                <>
-                                    <Button onClick={stop} isDisabled={!user}>stop</Button>
-                                </>
-                            )}
-                        </>
+                        <Door data={data} ref={ref} user={user} />
                     </Section>
 
                     <Section>
