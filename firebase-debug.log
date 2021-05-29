@@ -1,0 +1,128 @@
+[debug] [2021-05-29T20:24:56.278Z] ----------------------------------------------------------------------
+[debug] [2021-05-29T20:24:56.280Z] Command:       /usr/local/bin/firebase /home/mroz/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase emulators:start --only auth,functions,firestore --import=./data --export-on-exit
+[debug] [2021-05-29T20:24:56.280Z] CLI Version:   9.10.0
+[debug] [2021-05-29T20:24:56.280Z] Platform:      linux
+[debug] [2021-05-29T20:24:56.280Z] Node Version:  v12.18.1
+[debug] [2021-05-29T20:24:56.280Z] Time:          Sat May 29 2021 22:24:56 GMT+0200 (Central European Summer Time)
+[debug] [2021-05-29T20:24:56.281Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-05-29T20:24:56.286Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-05-29T20:24:56.286Z] > authorizing via signed-in user (mvarmuza@gmail.com)
+[info] i  emulators: Starting emulators: auth, functions, firestore {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, functions, firestore"}}
+[debug] [2021-05-29T20:24:56.297Z] [hub] writing locator at /tmp/hub-probable-bebop-176607.json
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: database, hosting, pubsub {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mdatabase, hosting, pubsub\u001b[22m"}}
+[info] ✔  functions: Using node@12 from host. {"metadata":{"emulator":{"name":"functions"},"message":"Using node@12 from host."}}
+[debug] [2021-05-29T20:24:56.319Z] defaultcredentials: writing to file /home/mroz/.config/firebase/mvarmuza_gmail_com_application_default_credentials.json
+[debug] [2021-05-29T20:24:56.321Z] Setting GAC to /home/mroz/.config/firebase/mvarmuza_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /home/mroz/.config/firebase/mvarmuza_gmail_com_application_default_credentials.json"}}
+[debug] [2021-05-29T20:24:56.323Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/probable-bebop-176607/adminSdkConfig [none]
+[debug] [2021-05-29T20:24:56.767Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/probable-bebop-176607/adminSdkConfig 200
+[debug] [2021-05-29T20:24:56.767Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/probable-bebop-176607/adminSdkConfig {"projectId":"probable-bebop-176607","databaseURL":"https://probable-bebop-176607.firebaseio.com","storageBucket":"probable-bebop-176607.appspot.com","locationId":"europe-west2"}
+[info] i  firestore: Importing data from /home/mroz/repos/chickenhouse.io/data/firestore_export/firestore_export.overall_export_metadata {"metadata":{"emulator":{"name":"firestore"},"message":"Importing data from /home/mroz/repos/chickenhouse.io/data/firestore_export/firestore_export.overall_export_metadata"}}
+[debug] [2021-05-29T20:24:56.780Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2021-05-29T20:24:56.780Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2021-05-29T20:24:56.780Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","/home/mroz/.cache/firebase/emulators/cloud-firestore-emulator-v1.11.14.jar","--host","localhost","--port",8080,"--seed_from_export","/home/mroz/repos/chickenhouse.io/data/firestore_export/firestore_export.overall_export_metadata","--rules","/home/mroz/repos/chickenhouse.io/firestore.rules","--functions_emulator","localhost:5001"],"optionalArgs":["port","webchannel_port","host","rules","functions_emulator","seed_from_export"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"/home/mroz/.cache/firebase/emulators/cloud-firestore-emulator-v1.11.14.jar\",\"--host\",\"localhost\",\"--port\",8080,\"--seed_from_export\",\"/home/mroz/repos/chickenhouse.io/data/firestore_export/firestore_export.overall_export_metadata\",\"--rules\",\"/home/mroz/repos/chickenhouse.io/firestore.rules\",\"--functions_emulator\",\"localhost:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"functions_emulator\",\"seed_from_export\"],\"joinArgs\":false}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[debug] [2021-05-29T20:24:57.810Z] May 29, 2021 10:24:57 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+INFO: Started WebSocket server on ws://localhost:35275
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 29, 2021 10:24:57 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start\nINFO: Started WebSocket server on ws://localhost:35275\n"}}
+[debug] [2021-05-29T20:24:57.896Z] API endpoint: http:// {"metadata":{"emulator":{"name":"firestore"},"message":"API endpoint: http://"}}
+[debug] [2021-05-29T20:24:57.897Z] localhost:8080
+If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=localhost:8080
+
+Dev App Server is now running.
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"localhost:8080\nIf you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:\n\n   export FIRESTORE_EMULATOR_HOST=localhost:8080\n\nDev App Server is now running.\n\n"}}
+[info] i  auth: Importing config from /home/mroz/repos/chickenhouse.io/data/auth_export/config.json {"metadata":{"emulator":{"name":"database"},"message":"Importing config from /home/mroz/repos/chickenhouse.io/data/auth_export/config.json"}}
+[info] i  auth: Importing accounts from /home/mroz/repos/chickenhouse.io/data/auth_export/accounts.json {"metadata":{"emulator":{"name":"database"},"message":"Importing accounts from /home/mroz/repos/chickenhouse.io/data/auth_export/accounts.json"}}
+[debug] [2021-05-29T20:25:01.135Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2021-05-29T20:25:01.135Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2021-05-29T20:25:01.135Z] Starting Emulator UI with command {"binary":"node","args":["/home/mroz/.cache/firebase/emulators/ui-v1.4.2/server.bundle.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/home/mroz/.cache/firebase/emulators/ui-v1.4.2/server.bundle.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2021-05-29T20:25:01.356Z] Web / API server started at http://localhost:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at http://localhost:4000\n"}}
+[info] i  functions: Watching "/home/mroz/repos/chickenhouse.io/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/home/mroz/repos/chickenhouse.io/functions\" for Cloud Functions..."}}
+[debug] [2021-05-29T20:25:01.434Z] [worker-pool] addWorker(~diagnostic~) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(~diagnostic~)"}}
+[debug] [2021-05-29T20:25:01.435Z] [worker-pool] Adding worker with key ~diagnostic~, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key ~diagnostic~, total=1"}}
+[debug] [2021-05-29T20:25:01.435Z] [worker-pool] submitWork(triggerId=) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitWork(triggerId=)"}}
+[debug] [2021-05-29T20:25:01.436Z] [worker-~diagnostic~-34820d93-6ca2-4746-baeb-adcdf036ac31]: Assigning socketPath: /tmp/fire_emu_61789.sock {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-34820d93-6ca2-4746-baeb-adcdf036ac31]: Assigning socketPath: /tmp/fire_emu_61789.sock"}}
+[debug] [2021-05-29T20:25:01.436Z] [worker-~diagnostic~-34820d93-6ca2-4746-baeb-adcdf036ac31]: BUSY {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-34820d93-6ca2-4746-baeb-adcdf036ac31]: BUSY"}}
+[debug] [2021-05-29T20:25:01.707Z] [runtime-status] [61789] Functions runtime initialized. {"cwd":"/home/mroz/repos/chickenhouse.io/functions","node_version":"12.18.1"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [61789] Functions runtime initialized. {\"cwd\":\"/home/mroz/repos/chickenhouse.io/functions\",\"node_version\":\"12.18.1\"}"}}
+[debug] [2021-05-29T20:25:01.708Z] [runtime-status] [61789] Disabled runtime features: undefined {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [61789] Disabled runtime features: undefined"}}
+[debug] [2021-05-29T20:25:01.709Z] [runtime-status] [61789] Resolved module firebase-admin {"declared":true,"installed":true,"version":"9.8.0","resolution":"/home/mroz/repos/chickenhouse.io/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [61789] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"9.8.0\",\"resolution\":\"/home/mroz/repos/chickenhouse.io/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2021-05-29T20:25:01.710Z] [runtime-status] [61789] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/home/mroz/repos/chickenhouse.io/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [61789] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.3.0\",\"resolution\":\"/home/mroz/repos/chickenhouse.io/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-05-29T20:25:01.711Z] [runtime-status] [61789] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/home/mroz/repos/chickenhouse.io/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [61789] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.3.0\",\"resolution\":\"/home/mroz/repos/chickenhouse.io/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-05-29T20:25:01.713Z] [runtime-status] [61789] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [61789] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2021-05-29T20:25:01.713Z] [runtime-status] [61789] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/home/mroz/repos/chickenhouse.io/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [61789] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.3.0\",\"resolution\":\"/home/mroz/repos/chickenhouse.io/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-05-29T20:25:01.750Z] [runtime-status] [61789] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [61789] Checked functions.config() {\"config\":{}}"}}
+[debug] [2021-05-29T20:25:01.751Z] [runtime-status] [61789] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"3.3.0","resolution":"/home/mroz/repos/chickenhouse.io/node_modules/firebase-functions/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [61789] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"3.3.0\",\"resolution\":\"/home/mroz/repos/chickenhouse.io/node_modules/firebase-functions/lib/index.js\"}}"}}
+[debug] [2021-05-29T20:25:01.751Z] [runtime-status] [61789] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/home/mroz/repos/chickenhouse.io/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [61789] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.3.0\",\"resolution\":\"/home/mroz/repos/chickenhouse.io/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-05-29T20:25:01.751Z] [runtime-status] [61789] Resolved module firebase-admin {"declared":true,"installed":true,"version":"9.8.0","resolution":"/home/mroz/repos/chickenhouse.io/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [61789] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"9.8.0\",\"resolution\":\"/home/mroz/repos/chickenhouse.io/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2021-05-29T20:25:01.752Z] [runtime-status] [61789] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/home/mroz/repos/chickenhouse.io/node_modules/firebase-functions/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [61789] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"3.3.0\",\"resolution\":\"/home/mroz/repos/chickenhouse.io/node_modules/firebase-functions/lib/index.js\"}"}}
+[debug] [2021-05-29T20:25:01.752Z] [runtime-status] [61789] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"9.8.0","resolution":"/home/mroz/repos/chickenhouse.io/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [61789] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"9.8.0\",\"resolution\":\"/home/mroz/repos/chickenhouse.io/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2021-05-29T20:25:01.858Z] [runtime-status] [61789] initializeApp(DEFAULT) {"storageBucket":"probable-bebop-176607.appspot.com","databaseURL":"https://probable-bebop-176607.firebaseio.com","projectId":"probable-bebop-176607"} {"metadata":{"emulator":{"name":"functions"},"message":"[runtime-status] [61789] initializeApp(DEFAULT) {\"storageBucket\":\"probable-bebop-176607.appspot.com\",\"databaseURL\":\"https://probable-bebop-176607.firebaseio.com\",\"projectId\":\"probable-bebop-176607\"}"}}
+[info] ✔  functions[webhook]: http function initialized (http://localhost:5001/probable-bebop-176607/us-central1/webhook). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://localhost:5001/probable-bebop-176607/us-central1/webhook)."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://localhost:4000                │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬─────────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI             │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Authentication │ localhost:9099 │ http://localhost:4000/auth      │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Functions      │ localhost:5001 │ http://localhost:4000/functions │
+├────────────────┼────────────────┼─────────────────────────────────┤
+│ Firestore      │ localhost:8080 │ http://localhost:4000/firestore │
+└────────────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at localhost:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2021-05-29T20:25:02.121Z] [worker-~diagnostic~-34820d93-6ca2-4746-baeb-adcdf036ac31]: IDLE {"metadata":{"emulator":{"name":"functions"},"message":"[worker-~diagnostic~-34820d93-6ca2-4746-baeb-adcdf036ac31]: IDLE"}}
+[debug] [2021-05-29T20:25:18.038Z] May 29, 2021 10:25:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 29, 2021 10:25:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-05-29T20:25:18.522Z] May 29, 2021 10:25:18 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 29, 2021 10:25:18 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2021-05-29T20:25:18.798Z] May 29, 2021 10:25:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 29, 2021 10:25:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-05-29T20:26:03.888Z] May 29, 2021 10:26:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 29, 2021 10:26:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-05-29T20:26:22.562Z] May 29, 2021 10:26:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 29, 2021 10:26:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-05-29T20:26:22.567Z] May 29, 2021 10:26:22 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 29, 2021 10:26:22 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2021-05-29T20:26:22.586Z] May 29, 2021 10:26:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 29, 2021 10:26:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-05-29T20:26:22.600Z] May 29, 2021 10:26:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 29, 2021 10:26:22 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-05-29T20:26:26.495Z] May 29, 2021 10:26:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 29, 2021 10:26:26 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-05-29T20:38:43.646Z] May 29, 2021 10:38:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 29, 2021 10:38:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-05-29T20:38:43.659Z] May 29, 2021 10:38:43 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
+WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 29, 2021 10:38:43 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2021-05-29T20:38:43.710Z] May 29, 2021 10:38:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 29, 2021 10:38:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-05-29T20:39:58.751Z] May 29, 2021 10:39:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 29, 2021 10:39:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-05-29T20:40:58.793Z] May 29, 2021 10:40:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 29, 2021 10:40:58 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}

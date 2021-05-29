@@ -1,12 +1,13 @@
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { getSunrise, getSunset } from "sunrise-sunset-js";
 import { useParams } from 'react-router-dom';
 
 import { Cam, Button } from "../../components";
 import { PayButton } from '../../modules';
-import db, { Kurnik, firebase } from '../../db';
+import  {useDb} from '../../hooks';
+import { firebase} from '../../db';
 
 const sunset = getSunset(49.33861111, 17.99611111);
 const sunrise = getSunrise(49.33861111, 17.99611111);
@@ -58,7 +59,6 @@ const Section = styled.div`
   align-items: center;
 `;
 
-const ref = db.kurnik.doc('data')
 
 interface Props {
     user?: firebase.User;
@@ -66,7 +66,8 @@ interface Props {
 
 
 export const Hut: React.FC<Props> = ({ user }) => {
-    const [data, setData] = useState<Kurnik | undefined>();
+
+    const { data, ref} = useDb();
 
     const moveUp = () => {
         ref.update({ door_movement: 1 });
@@ -88,11 +89,6 @@ export const Hut: React.FC<Props> = ({ user }) => {
         ref.update({ reboot_command: true });
     };
 
-    useEffect(() => {
-        ref.onSnapshot(doc => {
-            setData(doc.data());
-        });
-    }, []);
 
     const { citadelId } = useParams();
 
@@ -111,7 +107,6 @@ export const Hut: React.FC<Props> = ({ user }) => {
                 <h1>{citadelId}</h1>
             </Header>
             <Row>
-                {/* <EggCounter kurnikRef={ref} data={data} /> */}
             </Row>
             <Row>
                 <Col>
@@ -126,7 +121,7 @@ export const Hut: React.FC<Props> = ({ user }) => {
                             isDisabled={!user}
                         >
                             Toggle light
-            </Button>
+                        </Button>
                     </Section>
 
                     <Section>
@@ -134,7 +129,7 @@ export const Hut: React.FC<Props> = ({ user }) => {
                             Door ({data && data.door_movement === 0 && data.door_position}
                             {data && data.door_movement === 1 && "Moving up"}
                             {data && data.door_movement === -1 && "Moving down"})
-            </h2>
+                        </h2>
 
                         <div>sunset: {sunset.toLocaleTimeString()}</div>
                         <div>sunrise: {sunrise.toLocaleTimeString()}</div>
