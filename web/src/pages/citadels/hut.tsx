@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { getSunrise, getSunset } from "sunrise-sunset-js";
 import { useParams } from 'react-router-dom';
 
-import { Cam, Button } from "../../components";
-import { PayButton, Door, Light } from '../../modules';
+import { Cam } from "../../components";
+import { PayButton, Door, Light, Reboot } from '../../modules';
 import { useDb } from '../../hooks';
 import { firebase } from '../../db';
 
@@ -69,9 +69,6 @@ export const Hut: React.FC<Props> = ({ user }) => {
 
     const { data, dbRef } = useDb();
 
-    const reboot = () => {
-        dbRef.update({ reboot_command: true });
-    };
 
 
     const { citadelId } = useParams();
@@ -97,24 +94,18 @@ export const Hut: React.FC<Props> = ({ user }) => {
                     <Section>
                         <Light data={data} dbRef={dbRef} user={user} />
                     </Section>
-
                     <Section>
-
                         <div>sunset: {sunset.toLocaleTimeString()}</div>
                         <div>sunrise: {sunrise.toLocaleTimeString()}</div>
-
                         <Door data={data} dbRef={dbRef} user={user} />
                     </Section>
-
                     <Section>
-                        <h2>Something broken?</h2>
-                        <Button onClick={() => reboot()} isDisabled={!user}>Reboot</Button>
+                        <Reboot dbRef={dbRef} user={user} />
                     </Section>
                     <Section>
                         <PayButton />
                     </Section>
                 </Col>
-
                 <CamCol><Cam /></CamCol>
             </Row>
 
