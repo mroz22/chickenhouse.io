@@ -2,17 +2,17 @@ import React from 'react';
 import { Button } from '../../components';
 
 
-export const Door = ({ data, ref, user }) => {
+export const Door = ({ data, dbRef, user }) => {
     const moveUp = () => {
-        ref.update({ door_movement: 1 });
+        dbRef.update({ door_movement: 1 });
     };
 
     const moveDown = () => {
-        ref.update({ door_movement: -1 });
+        dbRef.update({ door_movement: -1 });
     };
 
     const stop = () => {
-        ref.update({ door_movement: 0, door_next_state: 0 });
+        dbRef.update({ door_movement: 0, door_next_state: 0 });
     };
 
 

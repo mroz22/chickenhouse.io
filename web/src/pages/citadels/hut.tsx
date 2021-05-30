@@ -67,10 +67,10 @@ interface Props {
 
 export const Hut: React.FC<Props> = ({ user }) => {
 
-    const { data, ref } = useDb();
+    const { data, dbRef } = useDb();
 
     const reboot = () => {
-        ref.update({ reboot_command: true });
+        dbRef.update({ reboot_command: true });
     };
 
 
@@ -95,7 +95,7 @@ export const Hut: React.FC<Props> = ({ user }) => {
             <Row>
                 <Col>
                     <Section>
-                        <Light data={data} ref={ref} user={user} />
+                        <Light data={data} dbRef={dbRef} user={user} />
                     </Section>
 
                     <Section>
@@ -103,7 +103,7 @@ export const Hut: React.FC<Props> = ({ user }) => {
                         <div>sunset: {sunset.toLocaleTimeString()}</div>
                         <div>sunrise: {sunrise.toLocaleTimeString()}</div>
 
-                        <Door data={data} ref={ref} user={user} />
+                        <Door data={data} dbRef={dbRef} user={user} />
                     </Section>
 
                     <Section>

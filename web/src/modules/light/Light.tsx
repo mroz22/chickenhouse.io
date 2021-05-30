@@ -2,10 +2,10 @@ import React from 'react';
 
 import { Button } from '../../components';
 
-export const Light = ({ data, ref, user }) => {
+export const Light = ({ data, dbRef, user }) => {
 
     const toggleLight = (value) => {
-        ref.update({ lightState: value });
+        dbRef.update({ lightState: value });
     };
 
     return (

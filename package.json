@@ -11,7 +11,8 @@
     "node": ">=12"
   },
   "scripts": {
-    "start": "concurrently \"firebase emulators:start --only auth,functions,firestore --import=./data --export-on-exit \" \"yarn workspace web start\""
+    "start": "concurrently \"firebase emulators:start --only auth,functions,firestore --import=./data --export-on-exit \" \"yarn workspace web start\"",
+    "deploy:web": "yarn workspace web build && firebase deploy --only hosting"
   },
   "devDependencies": {
     "concurrently": "^6.1.0"
