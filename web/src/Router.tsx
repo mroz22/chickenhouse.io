@@ -10,7 +10,7 @@ import {
 import styled from 'styled-components';
 
 import { Citadel, Hut, SpaceMission } from './pages/citadels';
-import { Declaration } from './pages';
+// import { Declaration } from './pages';
 import { Menu, CitadelsMenu } from './components';
 
 const CitadelsWrapper = styled.div`
@@ -25,7 +25,7 @@ export default ({ user}) => {
       <Menu />
       <Switch>
         <Route exact path="/">
-          <Declaration />
+          {/* <Declaration /> */}
           <CitadelsMenu />
         </Route>
         <Route path="/citadels">

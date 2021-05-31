@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 
 const MenuPrimary = styled.nav`
   background-color: #000;
+  min-height: 6vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 `
 const NavLinkPrimary = styled(Link)`
   color: #fff;
@@ -11,6 +16,11 @@ const NavLinkPrimary = styled(Link)`
   text-transform: uppercase;
   text-decoration: none;
   margin-right: 12px;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+  
 `;
 
 export const Menu = () => {
