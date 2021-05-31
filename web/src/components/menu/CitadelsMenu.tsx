@@ -8,15 +8,21 @@ import CitadelHutImg from '../../img/citadel-hut.png';
 import CitadelCitadelImg from '../../img/citadel-citadel.png';
 import CitadelMarsImg from '../../img/mars.png';
 
+const breakpoint = '768px'
 const LinksWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-`;
+
+  @media (max-width: ${breakpoint}) {
+    flex-direction: column;
+  }
+
+  `;
 
 const NavLinkCitadel = styled(Link)`
   display: flex;
-  flex: ${props => props.isFocused ? '2': '1'};
+  flex: ${props => props.isFocused ? '2' : '1'};
   min-height: 94vh;
   justify-content: center;
   align-items: center;
@@ -26,6 +32,11 @@ const NavLinkCitadel = styled(Link)`
   background-size: cover;
   text-decoration: none;
   transition: all .3s;
+
+  @media (max-width: ${breakpoint}) {
+    min-height: 31.33vh;
+    width: 100vw;
+  }
 `;
 
 const Title = styled.h3`
@@ -38,7 +49,7 @@ const Title = styled.h3`
 const MenuItem = ({ img, url, title, isFocused, ...rest }) => {
     return (
         <NavLinkCitadel to={url} background={img} isFocused={isFocused} {...rest}>
-             <Title>{title}</Title>
+            <Title>{title}</Title>
         </NavLinkCitadel>
     )
 }
