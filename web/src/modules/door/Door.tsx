@@ -34,12 +34,12 @@ export const Door = ({ data, dbRef, user }) => {
             return []
         }
 
-        const { door_movement } = data;
+        const { door_movement, door_position } = data;
 
         const actions = [{
             name: 'up',
             onClick: moveUp,
-            isDisabled: !user || door_movement !== 0,
+            isDisabled: !user || door_movement !== 0 || door_position === 'top',
         }, {
             name: 'stop',
             onClick: stop,
@@ -47,7 +47,7 @@ export const Door = ({ data, dbRef, user }) => {
         }, {
             name: 'down',
             onClick: moveDown,
-            isDisabled: !user || door_movement !== 0,
+            isDisabled: !user || door_movement !== 0 || door_position === 'bottom',
         }];
         return actions;
     }, [data, user, moveDown, moveUp, stop]);

@@ -8,7 +8,7 @@ export const Reboot = ({ dbRef, user, data }) => {
     }, [dbRef]);
 
     return (
-        <Control name="Reboot" state={data.rebooting ? "rebooting": "running"} actions={[
+        <Control name="Reboot" state={data.rebooting ? "rebooting" : "running"} actions={[
             {
                 name: 'Reboot',
                 onClick: reboot,
