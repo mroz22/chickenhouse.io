@@ -1,46 +1,60 @@
-import React from 'react';
-import { Button } from '../../components';
+import { useMemo, useCallback } from 'react';
+import { Control, ControlAction } from '../../components';
 
 
 export const Door = ({ data, dbRef, user }) => {
-    const moveUp = () => {
+    const moveUp = useCallback(() => {
         dbRef.update({ door_movement: 1 });
-    };
+    }, [dbRef]);
 
-    const moveDown = () => {
+    const moveDown = useCallback(() => {
         dbRef.update({ door_movement: -1 });
-    };
+    }, [dbRef]);
 
-    const stop = () => {
+    const stop = useCallback(() => {
         dbRef.update({ door_movement: 0, door_next_state: 0 });
-    };
+    }, [dbRef]);
 
+    const state = useMemo(() => {
+        if (!data) {
+            return
+        }
+        const { door_movement, door_position } = data;
+        if (door_movement === 0) {
+            return door_position
+        } else if (door_movement === 1) {
+            return "Moving up"
+        } else if (door_movement === -1) {
+            return "Moving down"
+        }
+    }, [data])
+
+    const actions: ControlAction[] = useMemo(() => {
+        if (!data) {
+            return []
+        }
+
+        const { door_movement } = data;
+
+        const actions = [{
+            name: 'up',
+            onClick: moveUp,
+            isDisabled: !user || door_movement !== 0,
+        }, {
+            name: 'stop',
+            onClick: stop,
+            isDisabled: !user || door_movement === 0,
+        }, {
+            name: 'down',
+            onClick: moveDown,
+            isDisabled: !user || door_movement !== 0,
+        }];
+        return actions;
+    }, [data, user, moveDown, moveUp, stop]);
+
+    console.log(actions);
 
     return (
-        <>
-            <h2>
-                Door ({data && data.door_movement === 0 && data.door_position}
-                {data && data.door_movement === 1 && "Moving up"}
-                {data && data.door_movement === -1 && "Moving down"})
-            </h2>
-
-            <>
-                {data && data.door_movement === 0 && (
-                    <>
-                        {data.door_position !== "top" && (
-                            <Button onClick={moveUp} isDisabled={!user}>up</Button>
-                        )}
-                        {data.door_position !== "bottom" && (
-                            <Button onClick={moveDown} isDisabled={!user}>down</Button>
-                        )}
-                    </>
-                )}
-                {data && data.door_movement !== 0 && (
-                    <>
-                        <Button onClick={stop} isDisabled={!user}>stop</Button>
-                    </>
-                )}
-            </>
-        </>
+        <Control name="Door" state={state} actions={actions} />
     )
 }

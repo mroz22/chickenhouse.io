@@ -7,7 +7,7 @@ const Styled = styled.button`
   cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 12px 18px;
   text-align: center;
   text-decoration: none;
   display: inline-block;

@@ -48,18 +48,6 @@ const Col = styled.div`
   justify-content: center;
 `;
 
-
-const Section = styled.div`
-  width: 250px;
-  padding: 20px 20px;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-`;
-
-
 interface Props {
     user?: firebase.User;
 }
@@ -87,11 +75,11 @@ const config = {
             type: 'light',
             options: {},
         },
-        {
-            id: 'pay-button-1',
-            type: 'pay-button',
-            options: {},
-        },
+        // {
+        //     id: 'pay-button-1',
+        //     type: 'pay-button',
+        //     options: {},
+        // },
         {
             id: 'reboot-1',
             type: 'reboot',
@@ -141,15 +129,12 @@ export const Hut: React.FC<Props> = ({ user }) => {
                             const Component = getComponent(c.type)
 
                             return (
-                                <Section key={c.id}>
-                                    <Component user={user} dbRef={dbRef} data={data} {...c.options}></Component>
-                                </Section>
+                                <Component key={c.id} user={user} dbRef={dbRef} data={data} {...c.options}></Component>
                             )
                         })
                     }
-                </Col>
-                <Col>
                     <Cam />
+
                 </Col>
             </Row>
 

@@ -1,16 +1,20 @@
-import React from 'react';
+import { useCallback } from 'react';
 
-import { Button } from '../../components';
+import { Control } from '../../components';
 
-export const Reboot = ({ dbRef, user }) => {
-    const reboot = () => {
+export const Reboot = ({ dbRef, user, data }) => {
+    const reboot = useCallback(() => {
         dbRef.update({ reboot_command: true });
-    };
+    }, [dbRef]);
 
     return (
-        <>
-            <h2>Something broken?</h2>
-            <Button onClick={() => reboot()} isDisabled={!user}>Reboot</Button>
-        </>
+        <Control name="Reboot" state={data.rebooting ? "rebooting": "running"} actions={[
+            {
+                name: 'Reboot',
+                onClick: reboot,
+                isDisabled: !user,
+
+            }
+        ]} />
     )
 }

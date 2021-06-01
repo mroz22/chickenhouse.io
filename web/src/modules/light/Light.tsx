@@ -1,26 +1,27 @@
-import React from 'react';
+import { useCallback } from 'react';
 
-import { Button } from '../../components';
+import { Control } from '../../components';
 
 export const Light = ({ data, dbRef, user }) => {
 
-    const toggleLight = (value) => {
-        dbRef.update({ lightState: value });
-    };
+    const toggleLight = useCallback(() => {
+        dbRef.update({ lightState: !data.lightState });
+    }, [dbRef, data.lightState]);
+
 
     return (
         <>
-            <h2>Light</h2>
-            <div>
-                {data && data.lightState ? "Light is on" : "Light is off"}{" "}
-            </div>
-            <Button
-                color="lightseagreen"
-                onClick={() => toggleLight(!data.lightState)}
-                isDisabled={!user}
-            >
-                Toggle light
-        </Button>
+            <Control
+                name="Light"
+                state={data.lightState ? "on" : "off"}
+                actions={[
+                    {
+                        name: 'Switch',
+                        onClick: toggleLight,
+                        isDisabled: !user
+                    }
+                ]}
+            />
         </>
     )
 }
