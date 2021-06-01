@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +7,6 @@ const MenuPrimary = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  
 `
 const NavLinkPrimary = styled(Link)`
   color: #fff;
@@ -20,19 +18,13 @@ const NavLinkPrimary = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
-  
 `;
 
 export const Menu = () => {
-    return (
-
-
-            <MenuPrimary >
-                <NavLinkPrimary to="/">Chicken citadel project</NavLinkPrimary>
-                <NavLinkPrimary to="/citadels">Citadels</NavLinkPrimary>
-            </MenuPrimary>
-            
-        
-    )
-
+  return (
+    <MenuPrimary >
+      <NavLinkPrimary to="/">Chicken citadel project</NavLinkPrimary>
+      <NavLinkPrimary to="/citadels">Citadels</NavLinkPrimary>
+    </MenuPrimary>
+  )
 }

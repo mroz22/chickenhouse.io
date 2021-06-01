@@ -8,6 +8,7 @@ import { Cam } from "../../components";
 import { PayButton, Door, Light, Reboot } from '../../modules';
 import { useDb } from '../../hooks';
 import { firebase } from '../../db';
+import { CAM_URL } from '../../config';
 
 const sunset = getSunset(49.33861111, 17.99611111);
 const sunrise = getSunrise(49.33861111, 17.99611111);
@@ -47,7 +48,6 @@ const Col = styled.div`
   justify-content: center;
 `;
 
-const CamCol = styled(Col)``;
 
 const Section = styled.div`
   width: 250px;
@@ -65,11 +65,59 @@ interface Props {
 }
 
 
+// todo: move it to some configuration file
+const config = {
+    cams: [{
+        url: CAM_URL
+    }],
+    modules: [
+        //     {
+        //     id: 'camera-1',
+        //     type: 'camera',
+        //     options: {
+        //         url: CAM_URL,
+        //     }
+        // }, 
+        {
+            id: 'door-1',
+            type: 'door',
+            options: {}
+        }, {
+            id: 'light-1',
+            type: 'light',
+            options: {},
+        },
+        {
+            id: 'pay-button-1',
+            type: 'pay-button',
+            options: {},
+        },
+        {
+            id: 'reboot-1',
+            type: 'reboot',
+            options: {},
+        }
+    ]
+}
+
+const getComponent = (type: string) => {
+    switch (type) {
+        case 'door':
+            return Door;
+        case 'light':
+            return Light;
+        case 'pay-button':
+            return PayButton;
+        case 'reboot':
+            return Reboot;
+        default:
+            return null;
+    }
+}
+
 export const Hut: React.FC<Props> = ({ user }) => {
 
     const { data, dbRef } = useDb();
-
-
 
     const { citadelId } = useParams();
 
@@ -81,32 +129,28 @@ export const Hut: React.FC<Props> = ({ user }) => {
         return <>Rebooting...</>;
     }
 
-
     return (
         <AppWrapper>
             <Header>
                 <h1>{citadelId}</h1>
             </Header>
             <Row>
-            </Row>
-            <Row>
                 <Col>
-                    <Section>
-                        <Light data={data} dbRef={dbRef} user={user} />
-                    </Section>
-                    <Section>
-                        <div>sunset: {sunset.toLocaleTimeString()}</div>
-                        <div>sunrise: {sunrise.toLocaleTimeString()}</div>
-                        <Door data={data} dbRef={dbRef} user={user} />
-                    </Section>
-                    <Section>
-                        <Reboot dbRef={dbRef} user={user} />
-                    </Section>
-                    <Section>
-                        <PayButton />
-                    </Section>
+                    {
+                        config.modules.map(c => {
+                            const Component = getComponent(c.type)
+
+                            return (
+                                <Section key={c.id}>
+                                    <Component user={user} dbRef={dbRef} data={data} {...c.options}></Component>
+                                </Section>
+                            )
+                        })
+                    }
                 </Col>
-                <CamCol><Cam /></CamCol>
+                <Col>
+                    <Cam />
+                </Col>
             </Row>
 
         </AppWrapper >
