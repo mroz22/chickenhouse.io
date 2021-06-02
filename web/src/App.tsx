@@ -1,14 +1,14 @@
 
 import React from "react";
 import Router from './Router';
-import { Auth } from './providers/Auth';
+import { ProvideAuth } from "./hooks";
 
 export const App: React.FC = () => {
   return (
-    <Auth>
-      {/* @ts-ignore */}
-      <Router  />
-    </Auth>
+    <ProvideAuth>
+      <Router />
+    </ProvideAuth>
+
   );
 }
 

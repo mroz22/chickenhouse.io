@@ -3,12 +3,13 @@ import {
   Switch,
   Route,
   useParams,
-  // useLocation,
+  // useLocation, 
   // useRouteMatch,
 } from "react-router-dom";
 // import styled from 'styled-components';
 
 import { Citadel, Hut, SpaceMission } from './pages/citadels';
+import { Login } from './pages';
 // import { Declaration } from './pages';
 import { Menu, CitadelsMenu } from './components';
 
@@ -18,7 +19,7 @@ import { Menu, CitadelsMenu } from './components';
 // `;
 
 
-export default ({ user }) => {
+export default () => {
   // const { path } = useRouteMatch();
   return (
     <Router>
@@ -33,7 +34,10 @@ export default ({ user }) => {
           {/* <CitadelsRouter user={user} /> */}
         </Route>
         <Route path="/citadels/:citadelId">
-          <Citadels user={user} />
+          <Citadels />
+        </Route>
+        <Route path="/login">
+          <Login />
         </Route>
         {/* <Route path={`${path}/:citadelId`}>
           <Citadels user={user} />
@@ -65,11 +69,11 @@ export default ({ user }) => {
 //   );
 // }
 
-const Citadels = ({ user }) => {
+const Citadels = () => {
   const { citadelId } = useParams();
   switch (citadelId) {
     case 'chicken-hut':
-      return <Hut user={user} />
+      return <Hut />
     case 'chicken-citadel':
       return <Citadel />
     case 'chicken-space-mission':

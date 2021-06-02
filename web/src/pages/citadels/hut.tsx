@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 
 import { Cam } from "../../components";
 import { PayButton, Door, Light, Reboot } from '../../modules';
-import { useDb } from '../../hooks';
+import { useDb, useAuth } from '../../hooks';
 import { firebase } from '../../db';
 import { CAM_URL } from '../../config';
 
@@ -103,9 +103,10 @@ const getComponent = (type: string) => {
     }
 }
 
-export const Hut: React.FC<Props> = ({ user }) => {
+export const Hut: React.FC<Props> = () => {
 
     const { data, dbRef } = useDb();
+    const {user} = useAuth();
 
     const { citadelId } = useParams();
 

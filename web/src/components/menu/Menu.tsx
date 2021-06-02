@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { useAuth } from '../../hooks';
+
 const MenuPrimary = styled.nav`
   background-color: #000;
   min-height: 6vh;
@@ -8,6 +10,7 @@ const MenuPrimary = styled.nav`
   justify-content: center;
   align-items: center;
 `
+
 const NavLinkPrimary = styled(Link)`
   color: #fff;
   font-weight: 500;
@@ -20,11 +23,35 @@ const NavLinkPrimary = styled(Link)`
   }
 `;
 
+const Main = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Right = styled.div`
+`;
+
 export const Menu = () => {
+  const auth = useAuth();
   return (
     <MenuPrimary >
-      <NavLinkPrimary to="/">Chicken citadel project</NavLinkPrimary>
-      <NavLinkPrimary to="/citadels">Citadels</NavLinkPrimary>
+      <Main>
+
+        <NavLinkPrimary to="/">Chicken citadel project</NavLinkPrimary>
+        <NavLinkPrimary to="/citadels">Citadels</NavLinkPrimary>
+      </Main>
+
+      <Right>
+        {
+          !auth.user && <NavLinkPrimary to="/login">Login</NavLinkPrimary>
+        }
+        {
+          auth.user && <NavLinkPrimary onClick={auth.signout}>Logout</NavLinkPrimary>
+        }
+      </Right>
+
     </MenuPrimary>
   )
 }
