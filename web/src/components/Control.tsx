@@ -17,25 +17,25 @@ interface Props {
 
 const Wrapper = styled.div`
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    width: 100%;
+    margin: 0 30px;
 `;
 
 const Name = styled.div`
     font-size: 24px;
-    width: 200px;
+    display: flex;
+    flex: 1
 `;
 
 const State = styled.div`
-    width: 200px;
+display: flex;
+    flex: 1
 `;
 
 const Actions = styled.div`
     display: flex;
+    flex: 2;
     flex-direction: row;
-    width: 200px;
-
 `;
 
 export const Control: React.FC<Props> = ({ name, state, actions }) => {

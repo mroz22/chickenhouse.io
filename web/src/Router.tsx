@@ -30,7 +30,6 @@ export default ({ user }) => {
         </Route>
         <Route exact path="/citadels">
           <CitadelsMenu />
-
           {/* <CitadelsRouter user={user} /> */}
         </Route>
         <Route path="/citadels/:citadelId">

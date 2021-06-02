@@ -23,7 +23,6 @@ const LinksWrapper = styled.div`
 
 const NavLinkCitadel = styled(Link)`
   display: flex;
-  flex: 1;
   flex: ${props => props.isFocused ? '2' : '1'};
   min-height: 94vh;
   justify-content: center;
@@ -39,10 +38,10 @@ const NavLinkCitadel = styled(Link)`
     transform: scale(0.98)
   `};  
 
-  @media(max - width: ${breakpoint}) {
+  @media(max-width: ${breakpoint}) {
     min-height: 31.33vh;
     width: 100vw;
-}
+  }
 `;
 
 const Title = styled.h3`

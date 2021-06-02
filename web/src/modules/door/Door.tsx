@@ -1,7 +1,6 @@
 import { useMemo, useCallback } from 'react';
 import { Control, ControlAction } from '../../components';
 
-
 export const Door = ({ data, dbRef, user }) => {
     const moveUp = useCallback(() => {
         dbRef.update({ door_movement: 1 });
