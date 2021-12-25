@@ -1,4 +1,4 @@
-require('dotenv').config()
+require("dotenv").config();
 require("firebase/firestore");
 require("firebase/auth");
 
@@ -22,13 +22,22 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
+const { EMAIL, PASSWORD, KURNIK } = process.env;
+
+if (!EMAIL || !PASSWORD || !KURNIK) {
+  console.error("Missing required env");
+  return process.exit(1);
+}
+
 // sign in
-firebase.auth().signInWithEmailAndPassword(process.env.EMAIL, process.env.PASSWORD)
+firebase
+  .auth()
+  .signInWithEmailAndPassword(EMAIL, PASSWORD)
   .then((user) => {
-    console.log('user', user);
+    console.log("user", user);
 
     // after successful sign up register listeners and set defaults.
-    const dataRef = db.collection("kurnik").doc("data");
+    const dataRef = db.collection("kurnik").doc(KURNIK);
     dataRef.update({ rebooting: false });
     dataRef.update({ reboot_command: false });
     dataRef.update({ door_movement: DOOR_STOP });
@@ -84,10 +93,9 @@ firebase.auth().signInWithEmailAndPassword(process.env.EMAIL, process.env.PASSWO
         chickenhouse.reboot();
       }
     });
-
   })
   .catch((error) => {
-    console.log('error', error);
+    console.log("error", error);
   });
 
 process.on("unhandledRejection", function (reason, p) {
