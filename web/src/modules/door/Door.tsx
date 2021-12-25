@@ -1,4 +1,5 @@
 import { useMemo, useCallback } from 'react';
+
 import { Control, ControlAction } from '../../components';
 
 export const Door = ({ data, dbRef, user }) => {

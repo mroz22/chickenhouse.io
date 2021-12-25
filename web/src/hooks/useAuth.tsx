@@ -1,7 +1,8 @@
 
 import { useState, useEffect, useContext, createContext } from "react";
-import { firebase } from '../db';
 import * as firebaseui from 'firebaseui';
+
+import { firebase } from '../db';
 
 interface UseAuthReturn {
     user?: firebase.User;

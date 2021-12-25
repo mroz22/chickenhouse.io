@@ -8,7 +8,7 @@ export interface Kurnik {
     },
     door_movement: -1 | 0 | 1;
     door_position: 'top' | 'bottom';
-    lightState: boolean;
+    light_state: boolean;
     reboot_command: boolean;
     rebooting: boolean;
     eggCounter: {
@@ -38,16 +38,16 @@ const converter = <T>() => ({
     fromFirestore: (snap: any) => snap.data() as T
 })
 
-const fs = firebase.firestore();
+const firestore = firebase.firestore();
 
 if (window.location.hostname === "localhost") {
-    fs.useEmulator("localhost", 8080);
+    firestore.useEmulator("localhost", 8080);
 }
 
 // This helper function exposes a 'typed' version of firestore().collection(collectionPath)
 // Pass it a collectionPath string as the path to the collection in firestore
 // Pass it a type argument representing the 'type' (schema) of the docs in the collection
-const dataPoint = <T>(collectionPath: string) => fs.collection(collectionPath).withConverter(converter<T>())
+const dataPoint = <T>(collectionPath: string) => firestore.collection(collectionPath).withConverter(converter<T>())
 
 // Construct a database helper object
 const db = {

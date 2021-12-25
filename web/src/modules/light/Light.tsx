@@ -5,15 +5,15 @@ import { Control } from '../../components';
 export const Light = ({ data, dbRef, user }) => {
 
     const toggleLight = useCallback(() => {
-        dbRef.update({ lightState: !data.lightState });
-    }, [dbRef, data.lightState]);
+        dbRef.update({ light_state: !data.light_state });
+    }, [dbRef, data.light_state]);
 
 
     return (
         <>
             <Control
                 name="Light"
-                state={data.lightState ? "on" : "off"}
+                state={data.light_state ? "on" : "off"}
                 actions={[
                     {
                         name: 'Switch',

@@ -36,7 +36,7 @@ class Chickenhouse extends EventEmitter {
     });
   }
 
-  setLightState(state) {
+  setlight_state(state) {
     this.PIN_LIGHT_RELAY.writeSync(Number(state));
   }
 

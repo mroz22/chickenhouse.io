@@ -8,6 +8,10 @@
 # testing
 /coverage
 
+/data
+web/src/config/config.js
+keys.json
+
 # production
 web/build
 

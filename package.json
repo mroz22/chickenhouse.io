@@ -6,12 +6,15 @@
     "web",
     "functions"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "firebase-admin": "^10.0.1"
+  },
   "engines": {
     "node": ">=12"
   },
   "scripts": {
-    "start": "concurrently \"firebase emulators:start --only auth,functions,firestore --import=./data --export-on-exit \" \"yarn workspace web start\"",
+    "pre-start": "cp -rf ./deployments/config.js ./web/src/config",
+    "start": "yarn pre-start && concurrently \"firebase emulators:start --only auth,functions,firestore,hosting --import=./data --export-on-exit \" \"yarn workspace web start\"",
     "deploy:web": "yarn workspace web build && firebase deploy --only hosting"
   },
   "devDependencies": {

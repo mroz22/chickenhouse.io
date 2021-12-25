@@ -8,7 +8,6 @@ module.exports = {
     'react-hooks',
     'import',
     'react',
-    'i18next',
   ],
   extends: [
     'eslint:recommended',

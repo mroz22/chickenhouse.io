@@ -74,8 +74,8 @@ firebase.auth().signInWithEmailAndPassword(process.env.EMAIL, process.env.PASSWO
       }
       if (door_movement === DOOR_STOP) chickenhouse.stop();
 
-      const lightState = doc.data().lightState ? 1 : 0;
-      chickenhouse.setLightState(lightState);
+      const light_state = doc.data().light_state ? 1 : 0;
+      chickenhouse.setlight_state(light_state);
 
       const reboot_command = doc.data().reboot_command;
 

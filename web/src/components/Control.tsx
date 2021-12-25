@@ -19,27 +19,30 @@ const Wrapper = styled.div`
     display: flex;
     width: 100%;
     margin: 0 30px;
+    align-items: center;
 `;
 
 const Name = styled.div`
     font-size: 24px;
     display: flex;
-    flex: 1
+    flex: 1;
+    min-width: 100px;
 `;
 
 const State = styled.div`
-display: flex;
-    flex: 1
+    display: flex;
+    flex: 1;
+    min-width: 100px;
 `;
 
 const Actions = styled.div`
     display: flex;
     flex: 2;
     flex-direction: row;
+    min-width: 100px;
 `;
 
 export const Control: React.FC<Props> = ({ name, state, actions }) => {
-    console.log(name, state, actions)
     return (
         <Wrapper>
             <Name>{name}</Name>

@@ -1,13 +1,18 @@
 
 import React from "react";
 
+import { Citadel as CitadelComponent } from "../../components";
+import { firebase } from '../../db';
+import { config } from '../../config';
 
-export const Citadel: React.FC = () => {
+interface Props {
+    user?: firebase.User;
+}
 
+export const Citadel: React.FC<Props> = () => {
     return (
-        <div>
-            <h1>Citadel</h1>
-        </div>
+        // @ts-ignore
+        <CitadelComponent config={config} />
     );
 }
 
