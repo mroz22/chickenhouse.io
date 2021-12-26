@@ -1,4 +1,4 @@
-export const config = {
+const config = {
   "chicken-hut": {
     name: "Chicken hut",
     modules: [
@@ -7,7 +7,14 @@ export const config = {
         type: "door",
         options: {
           web: {},
-          raspberry: {},
+          raspberry: {
+            gpio: {
+              motorPin1: 17,
+              motorPin2: 27,
+              doorStopPinBottom: 5,
+              doorStopPinTop: 6,
+            },
+          },
         },
       },
       {
@@ -15,7 +22,11 @@ export const config = {
         type: "light",
         options: {
           web: {},
-          raspberry: {},
+          raspberry: {
+            gpio: {
+              pin: 22,
+            },
+          },
         },
       },
       {
@@ -31,7 +42,7 @@ export const config = {
         type: "camera",
         options: {
           web: {
-            url: '',
+            url: "https://rollicking-walrus-0615.dataplicity.io/",
           },
           raspberry: {},
         },
@@ -77,12 +88,12 @@ export const config = {
         id: "camera-1",
         type: "camera",
         options: {
-          web: {
-            url: 'https://rollicking-walrus-0615.dataplicity.io/',
-          },
+          web: {},
           raspberry: {},
         },
       },
     ],
   },
 };
+
+module.exports = config;

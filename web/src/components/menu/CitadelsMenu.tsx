@@ -23,7 +23,7 @@ const LinksWrapper = styled.div`
 
 const NavLinkCitadel = styled(Link)`
   display: flex;
-  flex: ${props => props.isFocused ? '2' : '1'};
+  flex: ${props => props.$isFocused ? '2' : '1'};
   min-height: 94vh;
   justify-content: center;
   align-items: center;
@@ -34,7 +34,7 @@ const NavLinkCitadel = styled(Link)`
   text-decoration: none;
   transition: all .3s;
 
-  ${props => props.isFocused && css`
+  ${props => props.$isFocused && css`
     transform: scale(0.98)
   `};  
 
@@ -63,8 +63,9 @@ const SubTitle = styled(Title)`
 // `;
 
 const MenuItem = ({ img, url, title, subtitle, isFocused, ...rest }) => {
+    console.log('url', url);
     return (
-        <NavLinkCitadel to={url} background={img} isFocused={isFocused} {...rest}>
+        <NavLinkCitadel to={url} background={img} $isFocused={isFocused} {...rest}>
             <Title>{title}</Title>
             <SubTitle>{subtitle}</SubTitle>
             {/* <Desc isFocused={isFocused}>
@@ -97,7 +98,7 @@ export const CitadelsMenu = ({ isSmall = true }) => {
 
     return (
         <LinksWrapper>
-            {menuItems.map((item) => <MenuItem key={item.url} {...item} isSmall={isSmall} onMouseEnter={() => setMouseOverCitadel(item.url)} isFocused={mouseOverCitadel === item.url} />)}
+            {menuItems.map((item) => <MenuItem key={item.url} {...item} $isSmall={isSmall} onMouseEnter={() => setMouseOverCitadel(item.url)} isFocused={mouseOverCitadel === item.url} />)}
         </LinksWrapper>
     )
 }

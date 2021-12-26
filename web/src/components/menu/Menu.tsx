@@ -48,7 +48,7 @@ export const Menu = () => {
           !auth.user && <NavLinkPrimary to="/login">Login</NavLinkPrimary>
         }
         {
-          auth.user && <NavLinkPrimary onClick={auth.signout}>Logout</NavLinkPrimary>
+          auth.user && <NavLinkPrimary to="/" onClick={auth.signout}>Logout</NavLinkPrimary>
         }
       </Right>
 

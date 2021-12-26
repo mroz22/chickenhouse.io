@@ -12,7 +12,7 @@ export const Door = ({ data, dbRef, user }) => {
     }, [dbRef]);
 
     const stop = useCallback(() => {
-        dbRef.update({ door_movement: 0, door_next_state: 0 });
+        dbRef.update({ door_movement: 0 });
     }, [dbRef]);
 
     const state = useMemo(() => {

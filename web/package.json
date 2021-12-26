@@ -2,6 +2,7 @@
   "name": "web",
   "version": "1.0.0",
   "private": true,
+  "license": "foo",
   "dependencies": {
     "@babel/cli": "7.12.16",
     "@babel/core": "^7.12.16",

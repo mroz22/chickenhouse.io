@@ -15,7 +15,7 @@
   "scripts": {
     "pre-start": "cp -rf ./deployments/config.js ./web/src/config",
     "start": "yarn pre-start && concurrently \"firebase emulators:start --only auth,functions,firestore,hosting --import=./data --export-on-exit \" \"yarn workspace web start\"",
-    "deploy:web": "yarn workspace web build && firebase deploy --only hosting"
+    "deploy:web": "yarn pre-start && yarn workspace web build && firebase deploy --only hosting"
   },
   "devDependencies": {
     "concurrently": "^6.1.0"

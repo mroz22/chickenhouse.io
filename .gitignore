@@ -31,4 +31,4 @@ firestore-debug.log
 .firebase
 .vscode
 ui-debug.log
-
+.env

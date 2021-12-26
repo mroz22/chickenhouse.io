@@ -56,7 +56,7 @@ interface Props {
     config: {
         [key: string]: Config;
     }
-    
+
 }
 
 const getComponent = (type: string) => {
@@ -78,8 +78,9 @@ const getComponent = (type: string) => {
 
 export const Citadel: React.FC<Props> = ({ config }) => {
     const { citadelId } = useParams();
-console.log('citadelId', citadelId);
-    const { data, dbRef } = useDb({key: citadelId});
+    console.log('citadelId', citadelId);
+    console.log('config', config);
+    const { data, dbRef } = useDb({ key: citadelId });
     const { user } = useAuth();
 
     const citadelConfig = config[citadelId];
