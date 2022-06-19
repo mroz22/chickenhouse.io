@@ -24,6 +24,8 @@ export const useDb = ({ key }: Props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [key]);
 
+    console.log('data', data);
+    
     return {
         dbRef,
         data,

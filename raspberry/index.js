@@ -13,10 +13,6 @@ const Light = require("./modules/light");
 
 console.log("Starting");
 
-const DOOR_OPEN = 1;
-const DOOR_CLOSE = -1;
-const DOOR_STOP = 0;
-
 const firebaseConfig = {
   projectId: "probable-bebop-176607",
   apiKey: "AIzaSyAz38W7-b0YKmYKAbA2ff0cGN_B0LsRiZo",
@@ -35,7 +31,7 @@ const { EMAIL, PASSWORD, KURNIK } = process.env;
 
 if (!EMAIL || !PASSWORD || !KURNIK) {
   console.error("Missing required env");
-  return process.exit(1);
+  process.exit(1);
 }
 
 const citadelConfig = config[KURNIK];
@@ -63,24 +59,6 @@ firebase
           return new Light(options);
       }
     });
-    // dataRef.update({ rebooting: false });
-    // dataRef.update({ reboot_command: false });
-
-    // chickenhouse.on("dht/result", (message) => {
-    //   console.log("dht/result", message);
-    //   dataRef.update({ dht: message });
-    // });
-
-    // dataRef.onSnapshot(async function (doc) {
-    //   if (!doc || !doc.data()) return;
-
-    //   const reboot_command = doc.data().reboot_command;
-
-    //   if (reboot_command === true) {
-    //     await dataRef.update({ rebooting: true });
-    //     chickenhouse.reboot();
-    //   }
-    // });
   })
   .catch((error) => {
     console.log("error", error);

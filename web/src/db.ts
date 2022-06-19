@@ -15,7 +15,7 @@ export interface Kurnik {
         n: number;
         ts: Date;
     }[]
-}
+} 
 
 export type KurnikRef = firebase.firestore.DocumentReference<Kurnik>;
 

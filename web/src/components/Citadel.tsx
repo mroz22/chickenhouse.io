@@ -109,8 +109,6 @@ export const Citadel: React.FC<Props> = ({ config }) => {
                             )
                         })
                     }
-
-
                 </Col>
             </Row>
 
