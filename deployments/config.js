@@ -57,7 +57,14 @@ const config = {
         type: "door",
         options: {
           web: {},
-          raspberry: {},
+          raspberry: {
+            gpio: {
+              motorPin1: 17,
+              motorPin2: 27,
+              doorStopPinBottom: 5,
+              doorStopPinTop: 6,
+            },
+          },
         },
       },
       {
@@ -65,15 +72,11 @@ const config = {
         type: "light",
         options: {
           web: {},
-          raspberry: {},
-        },
-      },
-      {
-        id: "pay-button-1",
-        type: "pay-button",
-        options: {
-          web: {},
-          raspberry: {},
+          raspberry: {
+            gpio: {
+              pin: 22,
+            },
+          },
         },
       },
       {
@@ -88,7 +91,9 @@ const config = {
         id: "camera-1",
         type: "camera",
         options: {
-          web: {},
+          web: {
+            url: "https://rollicking-walrus-0615.dataplicity.io/",
+          },
           raspberry: {},
         },
       },
