@@ -1,13 +1,10 @@
-const exec = require("child_process").exec;
-const Gpio = require("onoff").Gpio;
 const sensor = require("node-dht-sensor");
 const EventEmitter = require("events");
 
 class Module extends EventEmitter {
   constructor({ id, dataRef, onStateChange }) {
     super();
-    if (!id || !dataRef) throw new Error("Module: missing required prop");
-
+    if (!id || !dataRef) throw new Error(`Module: ${id} missing required prop`);
     this.id = id;
     this.dataRef = dataRef;
     this.state = {};
@@ -19,12 +16,14 @@ class Module extends EventEmitter {
       }
       this.state = doc.data();
 
-      console.log("onSnapshot", this.state);
+      console.log("detected database change. next state: ", this.state);
       console.log('this.onStateChange', this.onStateChange);
       if (onStateChange) {
         onStateChange(this.state);
       }
     });
+
+    console.log(`Module: ${id}. Registered`)
   }
 
   onInit() {
@@ -35,7 +34,8 @@ class Module extends EventEmitter {
     // this.emit("module/next-state", {
     //   [this.id]: state,
     // });
-    dataRef.update({ [this.id]: { ...this.state, ...state } });
+    console.log(`Module ${this.id}: initiating state update`)
+    this.dataRef.update({ [this.id]: { ...this.state, ...state } });
   }
 }
 

@@ -7,6 +7,7 @@ const DOOR_STOP = 0;
 
 class Door extends Module {
   constructor({ id, dataRef, gpio }) {
+    
     const onStateChange = (state) => {
       const { door_movement, door_position } = state;
       if (door_movement === DOOR_OPEN && door_position !== "top") {

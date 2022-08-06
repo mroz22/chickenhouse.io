@@ -4,12 +4,10 @@ require("firebase/auth");
 
 const firebase = require("firebase/app");
 const config = require("../deployments/config");
+const { isDev } = require("./utils/env");
 
-const Chickenhouse = require("./chickenhouse");
 const Door = require("./modules/door");
 const Light = require("./modules/light");
-
-// const chickenhouse = new Chickenhouse();
 
 console.log("Starting");
 
@@ -22,9 +20,11 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-if (process.env.NODE_ENV === "dev") {
+if (isDev()) {
   console.log("running in dev mode");
   db.useEmulator("localhost", 8080);
+} else {
+  console.log("running in prod mode");
 }
 
 const { EMAIL, PASSWORD, KURNIK } = process.env;
