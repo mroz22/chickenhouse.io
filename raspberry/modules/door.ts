@@ -18,10 +18,10 @@ export class Door extends Module {
 
     const onStateChange = (state) => {
       const { door_movement, door_position } = state;
-      if (door_movement === DOOR_OPEN && door_position !== "top") {
+      if (door_movement === DOOR_OPEN && (!door_position || door_position !== "top") ) {
         this.moveUp();
       }
-      else if (door_movement === DOOR_CLOSE && door_position !== "bottom") {
+      else if (door_movement === DOOR_CLOSE && (!door_position || door_position !== "bottom")) {
         this.moveDown();
       }
       else if (door_movement === DOOR_STOP) {
