@@ -40,6 +40,10 @@ export class Module extends EventEmitter {
     throw new Error("Module: onInit needs override");
   }
 
+  log(message: string) {
+    console.log(`${this.id}: ${message}`)
+  }
+  
   setState(state) {
     // this.emit("module/next-state", {
     //   [this.id]: state,

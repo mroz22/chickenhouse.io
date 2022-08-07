@@ -42,6 +42,7 @@ export class Door extends Module {
       if (err) {
         return console.log("PIN_DOOR_STOP_BOTTOM error", err.message);
       }
+      this.log(`door stop bottom value: ${value}`)
       this.stop();
       this.setState({ door_position: 'bottom', door_movement: 0 })
       // this.emit("door-stop-bottom", value);
@@ -51,6 +52,7 @@ export class Door extends Module {
       if (err) {
         return console.log("PIN_DOOR_STOP_TOP error", err.message);
       }
+      this.log(`door stop top value: ${value}`)
       this.stop();
       this.setState({ door_position: 'top', door_movement: 0 });
       // this.emit("door-stop-top", value);
