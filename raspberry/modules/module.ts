@@ -15,7 +15,9 @@ export class Module extends EventEmitter {
     this.state = {};
     this.onStateChange = onStateChange;
 
-    console.log(`Module: ${id}. Registered`)
+    console.log(`Module: ${id}. Registered`);
+    console.log(`Module (this.id): ${this.id}. Registered`)
+
   }
 
   init() {
