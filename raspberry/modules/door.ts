@@ -62,12 +62,15 @@ export class Door extends Module {
   moveDown() {
     this.PIN_DOOR_MOTOR_1.writeSync(0);
     this.PIN_DOOR_MOTOR_2.writeSync(1);
-    console.log("moving down");
+    console.log(`${this.id}: moving down`);
+    this.setState({ door_position: '' });
   }
 
   moveUp() {
     this.PIN_DOOR_MOTOR_1.writeSync(1);
     this.PIN_DOOR_MOTOR_2.writeSync(0);
+    console.log(`${this.id}: moving up`);
+    this.setState({ door_position: '' });
   }
 
   stop() {
