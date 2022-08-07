@@ -26,7 +26,7 @@ export class Module extends EventEmitter {
       }
       this.state = doc.data();
 
-      console.log(`${this.id}: detected database change. next state: ${this.state} `);
+      console.log(`${this.id}: detected database change. next state: ${JSON.stringify(this.state)} `);
 
       if (this.onStateChange) {
         this.onStateChange(this.state);
