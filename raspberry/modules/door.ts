@@ -32,7 +32,8 @@ export class Door extends Module {
 
 
     const { motorPin1, motorPin2, doorStopPinBottom, doorStopPinTop } = gpio;
-
+    console.log('motorPin1, motorPin2', motorPin1, motorPin2);
+    
     this.PIN_DOOR_MOTOR_1 = new Gpio(motorPin1, "out"); // -> 17
     this.PIN_DOOR_MOTOR_2 = new Gpio(motorPin2, "out"); // -> 27
     this.PIN_DOOR_STOP_BOTTOM = new Gpio(doorStopPinBottom, "in", "both"); // -> 5
