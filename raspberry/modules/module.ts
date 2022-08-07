@@ -44,7 +44,7 @@ export class Module extends EventEmitter {
     // this.emit("module/next-state", {
     //   [this.id]: state,
     // });
-    console.log(`Module ${this.id}: initiating state update`)
+    console.log(`Module ${this.id}: initiating state update with values:`, JSON.stringify(state))
     this.dataRef.update({ ...this.state, ...state } );
   }
 }
