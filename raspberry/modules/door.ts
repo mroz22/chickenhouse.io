@@ -42,6 +42,7 @@ export class Door extends Module {
       if (err) {
         return console.log("PIN_DOOR_STOP_BOTTOM error", err.message);
       }
+      this.stop();
       this.setState({ door_position: 'bottom' })
       // this.emit("door-stop-bottom", value);
     });
@@ -50,7 +51,8 @@ export class Door extends Module {
       if (err) {
         return console.log("PIN_DOOR_STOP_TOP error", err.message);
       }
-      this.setState({ door_position: 'top' })
+      this.stop();
+      this.setState({ door_position: 'top' });
       // this.emit("door-stop-top", value);
     });
 
@@ -66,10 +68,6 @@ export class Door extends Module {
   moveUp() {
     this.PIN_DOOR_MOTOR_1.writeSync(1);
     this.PIN_DOOR_MOTOR_2.writeSync(0);
-    setTimeout(() => {
-      this.setState({ door_position: 'top' })
-    }, 5000);
-    console.log("moving up");
   }
 
   stop() {
