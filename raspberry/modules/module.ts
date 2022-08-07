@@ -34,7 +34,6 @@ export class Module extends EventEmitter {
         console.log(`${this.id}: no onStateChange handler registered`);
       }
     });
-
   }
 
   onInit() {
