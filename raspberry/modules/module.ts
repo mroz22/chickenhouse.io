@@ -16,12 +16,10 @@ export class Module extends EventEmitter {
     this.onStateChange = onStateChange;
 
     console.log(`Module: ${id}. Registered`);
-    console.log(`Module (this.id): ${this.id}. Registered`)
-
   }
 
   init() {
-    this.dataRef.onSnapshot(async function (doc) {
+    this.dataRef.onSnapshot(async (doc) => {
       if (!doc || !doc.data()) {
         console.log("no data");
         return;
