@@ -16,19 +16,6 @@ export class Door extends Module {
 
   constructor({ id, dataRef, gpio }) {
 
-    const onStateChange = (state) => {
-      const { door_movement, door_position } = state;
-      if (door_movement === DOOR_OPEN && door_position !== "top") {
-        this.moveUp();
-      }
-      if (door_movement === DOOR_CLOSE && door_position !== "bottom") {
-        this.moveDown();
-      }
-      if (door_movement === DOOR_STOP) this.stop();
-    };
-
-    super({ id, dataRef, onStateChange });
-
     const { motorPin1, motorPin2, doorStopPinBottom, doorStopPinTop } = gpio;
 
     this.PIN_DOOR_MOTOR_1 = new Gpio(motorPin1, "out"); // -> 17
@@ -36,6 +23,23 @@ export class Door extends Module {
     this.PIN_DOOR_STOP_BOTTOM = new Gpio(doorStopPinBottom, "in", "both"); // -> 5
     this.PIN_DOOR_STOP_TOP = new Gpio(doorStopPinTop, "in", "both"); // -> 6
 
+    
+    const onStateChange = (state) => {
+      const { door_movement, door_position } = state;
+      if (door_movement === DOOR_OPEN && door_position !== "top") {
+        this.moveUp();
+      }
+      else if (door_movement === DOOR_CLOSE && door_position !== "bottom") {
+        this.moveDown();
+      }
+      else if (door_movement === DOOR_STOP) {
+        this.stop();
+      }
+    };
+
+    super({ id, dataRef, onStateChange });
+
+    
     this.PIN_DOOR_STOP_BOTTOM.watch((err, value) => {
       if (err) {
         return console.log("PIN_DOOR_STOP_BOTTOM error", err.message);

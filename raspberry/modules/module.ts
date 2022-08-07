@@ -23,6 +23,7 @@ export class Module extends EventEmitter {
 
       console.log("detected database change. next state: ", this.state);
       console.log('this.onStateChange', this.onStateChange);
+      
       if (onStateChange) {
         onStateChange(this.state);
       }

@@ -9,7 +9,7 @@ cd /home/pi/chickenhouse.io
 
 git reset --hard
 git pull origin master
-git log
+git status
 
 # argh, cron does not see these paths
 /home/pi/.nvm/versions/node/v14.20.0/bin/node --version
