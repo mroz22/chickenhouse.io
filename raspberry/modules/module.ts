@@ -26,11 +26,12 @@ export class Module extends EventEmitter {
       }
       this.state = doc.data();
 
-      console.log("detected database change. next state: ", this.state);
-      console.log('this.onStateChange', this.onStateChange);
-      
+      console.log(`${this.id}: detected database change. next state: ${this.state} `);
+
       if (this.onStateChange) {
         this.onStateChange(this.state);
+      } else {
+        console.log(`${this.id}: no onStateChange handler registered`);
       }
     });
 
