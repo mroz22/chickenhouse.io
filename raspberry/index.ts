@@ -58,6 +58,11 @@ firebase
     // after successful sign up register listeners and set defaults.
     const dataRef = db.collection("kurnik").doc(KURNIK);
 
+    setInterval(() => {
+      
+    dataRef.update('timestamp', Date.now());
+
+    }, 1000 * 60);
     citadelConfig.modules.map((module: any) => {
       const options = {
         dataRef,
