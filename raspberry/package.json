@@ -2,6 +2,7 @@
   "name": "raspberry",
   "license": "foo",
   "version": "1.0.0",
+  "main": "index.js",
   "dependencies": {
     "dotenv": "^8.2.0",
     "node-dht-sensor": "^0.3.0",
@@ -9,8 +10,8 @@
     "onoff": "^4.1.3"
   },
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "NODE_ENV=prod nodemon index.js"
-
+    "dev": "nodemon --exec 'ts-node' ./index.ts",
+    "start": "NODE_ENV=prod nodemon --exec 'ts-node' ./index.ts",
+    "build:lib": "rimraf ./lib && tsc --build tsconfig.lib.json"
   }
 }

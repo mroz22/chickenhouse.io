@@ -1,13 +1,13 @@
-require("dotenv").config();
-require("firebase/firestore");
-require("firebase/auth");
+import 'dotenv/config'
+import "firebase/firestore";
+import "firebase/auth";
 
-const firebase = require("firebase/app");
-const config = require("../deployments/config");
-const { isDev } = require("./utils/env");
+import firebase from "firebase/app";
+import config from "../deployments/config";
+import { isDev } from "./utils/env";
 
-const Door = require("./modules/door");
-const Light = require("./modules/light");
+import { Door } from "./modules/door";
+import { Light } from "./modules/light";
 
 console.log("Starting");
 
@@ -34,19 +34,31 @@ if (!EMAIL || !PASSWORD || !KURNIK) {
   process.exit(1);
 }
 
+type KurnikName = 'chicken-citadel' | 'chicken-hut'
+
+function isValidKurnik(name: string): name is KurnikName {
+  return ['chicken-citadel', 'chicken-hut'].includes(name)
+
+}
+
+if (!isValidKurnik(KURNIK)) {
+  console.log(KURNIK, 'not part of config!')
+  process.exit(1);
+}
+
 const citadelConfig = config[KURNIK];
 
 // sign in
 firebase
   .auth()
   .signInWithEmailAndPassword(EMAIL, PASSWORD)
-  .then((user) => {
-    // console.log("user", user);
+  .then((_user: any) => {
+    console.log("user logged in");
 
     // after successful sign up register listeners and set defaults.
     const dataRef = db.collection("kurnik").doc(KURNIK);
 
-    const modules = citadelConfig.modules.map((module) => {
+    citadelConfig.modules.map((module: any) => {
       const options = {
         dataRef,
         id: module.id,
@@ -60,7 +72,7 @@ firebase
       }
     });
   })
-  .catch((error) => {
+  .catch((error: any) => {
     console.log("error", error);
   });
 
@@ -76,3 +88,4 @@ process.on("unhandledRejection", function (reason, p) {
 process.on("uncaughtException", function (error) {
   console.log("uncaughtException", error.message);
 });
+

@@ -1,7 +1,9 @@
-const Module = require("./module");
-const Gpio = require("../utils/gpio");
+// @ts-nocheck todo
 
-class Light extends Module {
+import {Module} from './module'
+import {Gpio} from "../utils/gpio";
+
+export class Light extends Module {
   constructor({ id, dataRef, gpio }) {
     const onStateChange = (state) => {
       const { light_state } = state;
@@ -31,4 +33,3 @@ class Light extends Module {
   }
 }
 
-module.exports = Light;

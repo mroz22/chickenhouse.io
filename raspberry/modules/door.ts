@@ -1,13 +1,21 @@
-const Module = require("./module");
-const Gpio = require("../utils/gpio");
+// @ts-nocheck
+// todo
+
+import { Module } from "./module";
+import { Gpio } from "../utils/gpio";
 
 const DOOR_OPEN = 1;
 const DOOR_CLOSE = -1;
 const DOOR_STOP = 0;
 
-class Door extends Module {
+export class Door extends Module {
+  PIN_DOOR_MOTOR_1: typeof Gpio;
+  PIN_DOOR_MOTOR_2: typeof Gpio
+  PIN_DOOR_STOP_BOTTOM: typeof Gpio
+  PIN_DOOR_STOP_TOP: typeof Gpio
+
   constructor({ id, dataRef, gpio }) {
-    
+
     const onStateChange = (state) => {
       const { door_movement, door_position } = state;
       if (door_movement === DOOR_OPEN && door_position !== "top") {
@@ -66,4 +74,3 @@ class Door extends Module {
   }
 }
 
-module.exports = Door;

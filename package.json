@@ -7,15 +7,16 @@
     "functions"
   ],
   "dependencies": {
-    "firebase-admin": "^10.0.1"
+    "firebase-admin": "^10.0.1",
+    "ts-node": "^10.9.1"
   },
   "engines": {
     "node": ">=12"
   },
   "scripts": {
-    "pre-start": "cp -rf ./deployments/config.js ./web/src/config",
-    "start": "yarn pre-start && concurrently \"firebase emulators:start --only auth,functions,firestore,hosting --import=./data --export-on-exit \" \"yarn workspace web start\"",
-    "deploy:web": "yarn pre-start && yarn workspace web build && firebase deploy --only hosting"
+    "pre-dev": "cp -rf ./deployments/config.js ./web/src/config",
+    "dev": "yarn pre-dev && concurrently \"firebase emulators:start --only auth,functions,firestore,hosting --import=./data --export-on-exit \" \"yarn workspace web start\"",
+    "deploy:web": "yarn pre-dev && yarn workspace web build && firebase deploy --only hosting"
   },
   "devDependencies": {
     "concurrently": "^6.1.0"

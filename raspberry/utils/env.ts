@@ -1,3 +1,3 @@
-module.exports.isDev = () => {
+export const isDev = () => {
     return process.env.NODE_ENV === "dev"
 }

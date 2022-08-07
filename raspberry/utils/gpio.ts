@@ -1,11 +1,11 @@
-const Gpio = require("onoff").Gpio;
+import { Gpio as GpioOrig } from "onoff";
 
 class GpioMock {
-  writeSync(value) {
+  writeSync(value: any) {
     console.log("virtual gpio write sync: ", value);
   }
 
-  readSync(value) {
+  readSync(value: any) {
     console.log("virtual gpio read sync: ", value);
   }
 
@@ -14,11 +14,13 @@ class GpioMock {
   }
 }
 
-if (Gpio.accessible) {
+if (GpioOrig.accessible) {
   console.log('Gpio.accessible, using real pins')
 } else {
   console.log('Gpio not accessible, using mocked pins')
 
 }
 
-module.exports = Gpio.accessible ? Gpio : GpioMock;
+export const Gpio =  GpioOrig.accessible ? GpioOrig : GpioMock;
+
+

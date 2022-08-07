@@ -1,7 +1,12 @@
-const sensor = require("node-dht-sensor");
-const EventEmitter = require("events");
+// @ts-nocheck todo
 
-class Module extends EventEmitter {
+import EventEmitter from "events";
+
+export class Module extends EventEmitter {
+  id: string;
+  dataRef: any; // todo
+  state: any; // todo;
+
   constructor({ id, dataRef, onStateChange }) {
     super();
     if (!id || !dataRef) throw new Error(`Module: ${id} missing required prop`);
@@ -39,4 +44,3 @@ class Module extends EventEmitter {
   }
 }
 
-module.exports = Module;
