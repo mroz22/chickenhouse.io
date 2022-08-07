@@ -18,6 +18,8 @@ export class Light extends Module {
 
     const { pin } = gpio;
     this.PIN = new Gpio(pin, "out");
+
+    this.init();
   }
 
   turnOn() {
