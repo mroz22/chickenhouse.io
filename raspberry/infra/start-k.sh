@@ -11,10 +11,9 @@ git reset --hard
 git pull origin master
 git log
 
-
-node --version
+# argh, cron does not see these paths
+/home/pi/.nvm/versions/node/v14.20.0/bin/node --version
 # todo probably some install script?
-npm install -g yarn
-
-yarn workspace raspberry start
+/home/pi/.nvm/versions/node/v14.20.0/bin/npm install -g yarn
+/home/pi/.nvm/versions/node/v14.20.0/bin/yarn workspace raspberry start
 
