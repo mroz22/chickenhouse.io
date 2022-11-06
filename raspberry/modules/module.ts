@@ -1,6 +1,7 @@
-// @ts-nocheck todo
+// @ts-nocheck
 
 import EventEmitter from "events";
+import {updateDoc, onSnapshot } from 'firebase/firestore';
 
 export class Module extends EventEmitter {
   id: string;
@@ -19,7 +20,7 @@ export class Module extends EventEmitter {
   }
 
   init() {
-    this.dataRef.onSnapshot(async (doc) => {
+    onSnapshot(this.dataRef, async (doc) => {
       if (!doc || !doc.data()) {
         console.log("no data");
         return;
@@ -45,11 +46,8 @@ export class Module extends EventEmitter {
   }
   
   setState(state) {
-    // this.emit("module/next-state", {
-    //   [this.id]: state,
-    // });
     console.log(`Module ${this.id}: initiating state update with values:`, JSON.stringify(state))
-    this.dataRef.update({ ...this.state, ...state } );
+    updateDoc(this.dataRef, { ...this.state, ...state } );
   }
 }
 

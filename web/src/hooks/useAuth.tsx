@@ -1,17 +1,18 @@
 
 import { useState, useEffect, useContext, createContext } from "react";
 import * as firebaseui from 'firebaseui';
+import {EmailAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail as authSendPasswordResetEmail, confirmPasswordReset as authConfirmPasswordReset } from "firebase/auth";
+import { auth } from '../db';
 
-import { firebase } from '../db';
-
-interface UseAuthReturn {
-    user?: firebase.User;
-    signin: firebase.auth.Auth['signInWithEmailAndPassword'];
-    signup: firebase.auth.Auth['createUserWithEmailAndPassword'];
-    signout: firebase.auth.Auth['signOut'];
-    sendPasswordResetEmail: firebase.auth.Auth['sendPasswordResetEmail'];
-    confirmPasswordReset: firebase.auth.Auth['confirmPasswordReset'];
-}
+type UseAuthReturn = any;
+// interface UseAuthReturn {
+//     user?: firebase.User;
+//     signin: firebase.auth.Auth['signInWithEmailAndPassword'];
+//     signup: firebase.auth.Auth['createUserWithEmailAndPassword'];
+//     signout: firebase.auth.Auth['signOut'];
+//     sendPasswordResetEmail: firebase.auth.Auth['sendPasswordResetEmail'];
+//     confirmPasswordReset: firebase.auth.Auth['confirmPasswordReset'];
+// }
 
 // @ts-ignore
 const authContext = createContext<UseAuthReturn>({
@@ -22,7 +23,7 @@ const authContext = createContext<UseAuthReturn>({
 // ... available to any child component that calls useAuth().
 export function ProvideAuth({ children }) {
     const auth = useProvideAuth();
-    return (<authContext.Provider value={auth} > { children} </authContext.Provider>);
+    return (<authContext.Provider value={auth} > {children} </authContext.Provider>);
 }
 
 // Hook for child components to get the auth object ...
@@ -38,41 +39,36 @@ function useProvideAuth() {
     // Wrap any Firebase methods we want to use making sure ...
     // ... to save the user to state.
     const signin: UseAuthReturn['signin'] = async (email, password) => {
-        const response = await firebase
-            .auth()
-            .signInWithEmailAndPassword(email, password);
+        const response = await
+            signInWithEmailAndPassword(auth, email, password);
         setUser(response.user);
         return response;
     };
     const signup: UseAuthReturn['signup'] = async (email, password) => {
-        const response = await firebase
-            .auth()
-            .createUserWithEmailAndPassword(email, password);
+        const response =
+            await createUserWithEmailAndPassword(auth, email, password);
         setUser(response.user);
         return response;
     };
     const signout: UseAuthReturn['signout'] = async () => {
-        await firebase
-            .auth()
+        await auth
             .signOut();
         return setUser(undefined);
     };
     const sendPasswordResetEmail: UseAuthReturn['sendPasswordResetEmail'] = async (email) => {
-        await firebase
-            .auth()
-            .sendPasswordResetEmail(email);
+        await
+            authSendPasswordResetEmail(auth, email);
     };
     const confirmPasswordReset: UseAuthReturn['confirmPasswordReset'] = async (code, password) => {
-        await firebase
-            .auth()
-            .confirmPasswordReset(code, password);
+        await
+            authConfirmPasswordReset(auth, code, password);
     };
     // Subscribe to user on mount
     // Because this sets state in the callback it will cause any ...
     // ... component that utilizes this hook to re-render with the ...
     // ... latest auth object.
     useEffect(() => {
-        const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
             if (user) {
                 setUser(user);
             } else {
@@ -107,13 +103,13 @@ export const initAuth = () => {
             // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
             // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
             // firebase.auth.GithubAuthProvider.PROVIDER_ID,
-            firebase.auth.EmailAuthProvider.PROVIDER_ID,
+            EmailAuthProvider.PROVIDER_ID,
             // firebase.auth.PhoneAuthProvider.PROVIDER_ID,
             firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
         ],
     };
     // Initialize the FirebaseUI Widget using Firebase.
-    ui = new firebaseui.auth.AuthUI(firebase.auth());
+    ui = new firebaseui.auth.AuthUI(auth);
     ui.appendUI = () => ui.start('#firebaseui-auth-container', uiConfig);
     return ui;
 

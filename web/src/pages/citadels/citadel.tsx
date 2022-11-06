@@ -2,11 +2,10 @@
 import React from "react";
 
 import { Citadel as CitadelComponent } from "../../components";
-import { firebase } from '../../db';
 import { config } from '../../config';
 
 interface Props {
-    user?: firebase.User;
+    user?: any;
 }
 
 export const Citadel: React.FC<Props> = () => {

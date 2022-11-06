@@ -33,6 +33,8 @@ export class Door extends Module {
 
     const { motorPin1, motorPin2, doorStopPinBottom, doorStopPinTop } = gpio;
 
+    this.moveTimeout = undefined;
+
     this.PIN_DOOR_MOTOR_1 = new Gpio(motorPin1, "out"); // -> 17
     this.PIN_DOOR_MOTOR_2 = new Gpio(motorPin2, "out"); // -> 27
     this.PIN_DOOR_STOP_BOTTOM = new Gpio(doorStopPinBottom, "in", "both"); // -> 5
@@ -68,9 +70,20 @@ export class Door extends Module {
     this.init();
   }
 
+ setMovementFailsafeTimeout() {
+    if (!this.moveTimeout) {
+      this.moveTimeout = setTimeout(() => {
+        this.stop();
+        clearTimeout(this.moveTimeout);
+        this.moveTimeout = undefined;
+      }, 1000 * 5)
+    }
+  }
+
   moveDown() {
     this.PIN_DOOR_MOTOR_1.writeSync(0);
     this.PIN_DOOR_MOTOR_2.writeSync(1);
+    this.setMovementFailsafeTimeout()
     console.log(`${this.id}: moving down`);
     this.setState({ door_position: '' });
   }
@@ -78,6 +91,7 @@ export class Door extends Module {
   moveUp() {
     this.PIN_DOOR_MOTOR_1.writeSync(1);
     this.PIN_DOOR_MOTOR_2.writeSync(0);
+    this.setMovementFailsafeTimeout()
     console.log(`${this.id}: moving up`);
     this.setState({ door_position: '' });
   }

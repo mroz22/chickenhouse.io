@@ -6,6 +6,10 @@
     "web",
     "functions"
   ],
+  "__notes__start__": "__notes__start__",
+  "install_firabase_local": "curl -sL firebase.tools | bash",
+  "__notes__end__": "__notes__end__",
+
   "dependencies": {
     "firebase-admin": "^10.0.1",
     "ts-node": "^10.9.1"

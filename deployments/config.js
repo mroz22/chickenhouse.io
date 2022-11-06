@@ -17,18 +17,18 @@ const config = {
           },
         },
       },
-      {
-        id: "light-1",
-        type: "light",
-        options: {
-          web: {},
-          raspberry: {
-            gpio: {
-              pin: 22,
-            },
-          },
-        },
-      },
+      // {
+      //   id: "light-1",
+      //   type: "light",
+      //   options: {
+      //     web: {},
+      //     raspberry: {
+      //       gpio: {
+      //         pin: 22,
+      //       },
+      //     },
+      //   },
+      // },
       {
         id: "reboot-1",
         type: "reboot",
@@ -67,18 +67,18 @@ const config = {
           },
         },
       },
-      {
-        id: "light-1",
-        type: "light",
-        options: {
-          web: {},
-          raspberry: {
-            gpio: {
-              pin: 22,
-            },
-          },
-        },
-      },
+      // {
+      //   id: "light-1",
+      //   type: "light",
+      //   options: {
+      //     web: {},
+      //     raspberry: {
+      //       gpio: {
+      //         pin: 22,
+      //       },
+      //     },
+      //   },
+      // },
       {
         id: "reboot-1",
         type: "reboot",

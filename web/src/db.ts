@@ -1,5 +1,6 @@
-import firebase from "firebase";
-
+import {initializeApp} from "firebase/app";
+import { getFirestore,  doc, onSnapshot, connectFirestoreEmulator, updateDoc} from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
 export interface Kurnik {
     4: {
         hum?: number;
@@ -17,7 +18,8 @@ export interface Kurnik {
     }[]
 } 
 
-export type KurnikRef = firebase.firestore.DocumentReference<Kurnik>;
+// export type KurnikRef = firebase.firestore.DocumentReference<Kurnik>;
+export type KurnikRef = any;
 
 const firebaseConfig = {
     apiKey: "AIzaSyAz38W7-b0YKmYKAbA2ff0cGN_B0LsRiZo",
@@ -30,32 +32,45 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
 // This helper function pipes your types through a firestore converter
-const converter = <T>() => ({
-    toFirestore: (data: Partial<T>) => data,
-    fromFirestore: (snap: any) => snap.data() as T
-})
+// const converter = <T>() => ({
+//     toFirestore: (data: Partial<T>) => data,
+//     fromFirestore: (snap: any) => snap.data() as T
+// })
 
-const firestore = firebase.firestore();
+const firestore = getFirestore();
 
 if (window.location.hostname === "localhost") {
-    firestore.useEmulator("localhost", 8080);
+    //  127.0.0.1:8080
+    connectFirestoreEmulator(firestore, "127.0.0.1", 8080)
 }
 
 // This helper function exposes a 'typed' version of firestore().collection(collectionPath)
 // Pass it a collectionPath string as the path to the collection in firestore
 // Pass it a type argument representing the 'type' (schema) of the docs in the collection
-const dataPoint = <T>(collectionPath: string) => firestore.collection(collectionPath).withConverter(converter<T>())
+// const collection(firestore, 'kurnik');
+// const dataPoint = (collectionPath: string[]) => doc(firestore,...collectionPath)
 
+// const chickenCitadel = dataPoint(['kurnik', 'chickenCitadel']);
 // Construct a database helper object
+const createDb = (name: string) => {
+    const docc = doc(firestore, "kurnik", name);
+
+    return {
+        onSnapshot:(callback) => onSnapshot(docc, callback),
+        update: (data) => updateDoc(docc,data)
+    }
+}
 const db = {
     // list your collections here
-    kurnik: dataPoint<Kurnik>('kurnik'),
-    chickenCitadel: dataPoint<Kurnik>('chickenCitadel'),
-    spaceMission: dataPoint<Kurnik>('spaceMission'),
+    ['chicken-hut']: createDb('chicken-hut'),
+    ['chicken-citadel']: createDb('chicken-citadel'),
+    ['space-mission']: createDb('space-mission'),
 }
 
-export { db, firebase }
+const auth = getAuth(app);
+
+export { db, app, auth }
 export default db

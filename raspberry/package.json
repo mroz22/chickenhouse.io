@@ -4,13 +4,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
+    "aws-sdk": "^2.1248.0",
     "dotenv": "^8.2.0",
+    "firebase": "^9.13.0",
     "node-dht-sensor": "^0.3.0",
+    "node-webcam": "^0.8.1",
     "nodemon": "^2.0.2",
     "onoff": "^6.0.3"
   },
   "scripts": {
-    "dev": "nodemon --exec 'ts-node' ./index.ts",
+    "dev": "NODE_ENV=dev nodemon --exec 'ts-node' ./index.ts",
     "start": "NODE_ENV=prod nodemon --exec 'ts-node' ./index.ts",
     "build:lib": "rimraf ./lib && tsc --build tsconfig.lib.json"
   }

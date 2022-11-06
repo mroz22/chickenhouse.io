@@ -3,11 +3,9 @@ import React from "react";
 import styled from "styled-components";
 import { useParams } from 'react-router-dom';
 
-import { PayButton, Door, Light, Reboot } from '../modules';
+import { PayButton, Door, Light, Reboot, Camera } from '../modules';
 import { useDb, useAuth } from '../hooks';
-import { firebase } from '../db';
 
-import { Cam } from "./Cam";
 
 const AppWrapper = styled.div`
   color: white;
@@ -52,7 +50,7 @@ interface Config {
 }
 
 interface Props {
-    user?: firebase.User;
+    user?: any;
     config: {
         [key: string]: Config;
     }
@@ -70,7 +68,7 @@ const getComponent = (type: string) => {
         case 'reboot':
             return Reboot;
         case 'camera':
-            return Cam;
+            return Camera;
         default:
             return null;
     }

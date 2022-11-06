@@ -1,9 +1,8 @@
 import 'dotenv/config'
-import "firebase/firestore";
-import "firebase/auth";
-
-import firebase from "firebase/app";
 import config from "../deployments/config";
+import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import { getFirestore, connectFirestoreEmulator, doc, updateDoc } from 'firebase/firestore';
+import {initializeApp} from "firebase/app";
 import { isDev } from "./utils/env";
 
 import { Door } from "./modules/door";
@@ -17,12 +16,12 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+const app = initializeApp(firebaseConfig);
+const db = getFirestore();
 
 if (isDev()) {
   console.log("running in dev mode");
-  db.useEmulator("localhost", 8080);
+  connectFirestoreEmulator(db, "127.0.0.1", 8080)
 } else {
   console.log("running in prod mode");
 }
@@ -49,20 +48,19 @@ if (!isValidKurnik(KURNIK)) {
 const citadelConfig = config[KURNIK];
 
 // sign in
-firebase
-  .auth()
-  .signInWithEmailAndPassword(EMAIL, PASSWORD)
+const auth = getAuth(app);
+
+signInWithEmailAndPassword(auth, EMAIL, PASSWORD)
   .then((_user: any) => {
     console.log("user logged in");
 
     // after successful sign up register listeners and set defaults.
-    const dataRef = db.collection("kurnik").doc(KURNIK);
-
+    const dataRef = doc(db, 'kurnik', KURNIK);
+    
     setInterval(() => {
-      
-    dataRef.update('timestamp', Date.now());
-
+      updateDoc(dataRef, 'timestamp', Date.now());
     }, 1000 * 60);
+
     citadelConfig.modules.map((module: any) => {
       const options = {
         dataRef,

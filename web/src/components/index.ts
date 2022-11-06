@@ -1,4 +1,4 @@
-export * from './Cam';
+export * from '../modules/Camera';
 export * from './Link';
 export * from './Circle';
 export * from './Button';

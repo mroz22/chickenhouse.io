@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import db, { Kurnik } from '../db';
+import  {db, Kurnik } from '../db';
 
 // todo: https://usehooks.com/useFirestoreQuery/
 interface Props {
@@ -9,12 +9,16 @@ interface Props {
 
 export const useDb = ({ key }: Props) => {
     console.log('---key', key);
-    const dbRef = db.kurnik.doc(key)
+    console.log(db);
+    console.log(db[key])
+    const dbRef = db[key]
     const [data, setData] = useState<Kurnik | undefined>();
 
     useEffect(() => {
-        dbRef.onSnapshot(doc => {
-            setData(doc.data());
+        dbRef.onSnapshot(snapshot => {
+            console.log('onSnapshot triggerd', snapshot)
+            console.log('doc.data()', snapshot.data());
+                setData(snapshot.data());
         });
 
         return () => {
