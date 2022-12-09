@@ -6089,13 +6089,13 @@ entities@^2.0.0:
   resolved "https://registry.yarnpkg.com/entities/-/entities-2.0.0.tgz#68d6084cab1b079767540d80e56a39b423e4abf4"
   integrity sha512-D9f7V0JSRwIxlRI2mjMqufDrRDnx8p+eEOz7aUM9SuvF8gsBzra0/6tbjl1m8eQHrZlYj6PxqE00hZ1SAIKPLw==
 
-epoll@^2.0.10:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/epoll/-/epoll-2.0.10.tgz#aae54a267d7fb8108074b62646d658b267f73915"
-  integrity sha512-kx5y1SxivN99HjXDZpE/A73FHJV/dzRQt+qoF88CEza3RcEKGqNfkXPPY/oqVBV5w6G2N6b8xd5s5zprgrUVnQ==
+epoll@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/epoll/-/epoll-4.0.1.tgz#62b787d29980394798fa7b9a45fbefea518fc732"
+  integrity sha512-BgCq0nEsk+XI7y9qjrRtt9uXsyFEdvevvq42xl6t/hKZjxLSDZreD9rTZ0pU40V//c3Zzk2PZGuIsn8YJHSJ4g==
   dependencies:
     bindings "^1.5.0"
-    nan "^2.14.0"
+    nan "^2.14.2"
 
 errno@^0.1.3, errno@~0.1.7:
   version "0.1.7"
@@ -9954,10 +9954,15 @@ mute-stream@0.0.7:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
   integrity sha1-MHXOk7whuPq0PhvE2n6BFe0ee6s=
 
-nan@^2.12.1, nan@^2.14.0:
+nan@^2.12.1:
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
   integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
+
+nan@^2.14.2:
+  version "2.17.0"
+  resolved "https://registry.yarnpkg.com/nan/-/nan-2.17.0.tgz#c0150a2368a182f033e9aa5195ec76ea41a199cb"
+  integrity sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ==
 
 nanoid@^3.1.22:
   version "3.1.22"
@@ -10376,12 +10381,12 @@ onetime@^5.1.0:
   dependencies:
     mimic-fn "^2.1.0"
 
-onoff@^4.1.3:
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/onoff/-/onoff-4.1.4.tgz#26422f745a45f8c78af0f49b6bc8682d7deb8c13"
-  integrity sha512-donHmh40cVZuU4CKp6vTWi0y2QK7OXiOlMSeqXPV+iWi0EqLOV5ld0qVVO0rp7/f9GAeX21LgrOBfT2Bk2RVvQ==
+onoff@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/onoff/-/onoff-6.0.3.tgz#b8e41aec363bebbb3d76e47d74b8ae9cea8d4280"
+  integrity sha512-xtVlwRDzswYM69bzzIui/qzu7QHsFnjsQiCV1iYVA/HXt5xdc9utc97SYAlXzK8wAhIN7+H7MaVqh2vpfdKk9A==
   dependencies:
-    epoll "^2.0.10"
+    epoll "^4.0.1"
     lodash.debounce "^4.0.8"
 
 open@^7.0.2:
@@ -11750,9 +11755,9 @@ qs@6.7.0:
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
 qs@~6.5.2:
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
-  integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.3.tgz#3aeeffc91967ef6e35c0e488ef46fb296ab76aad"
+  integrity sha512-qxXIEh4pCGfHICj1mAJQ2/2XVZkjCDTcEgfoSQxc/fYivUZxTkk7L3bDBJSoNrEzXI17oUO5Dp07ktqE5KzczA==
 
 query-string@^4.1.0:
   version "4.3.4"
