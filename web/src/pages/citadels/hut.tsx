@@ -10,7 +10,6 @@ interface Props {
 
 export const Hut: React.FC<Props> = () => {
     return (
-        // @ts-ignore
         <CitadelComponent config={config} />
     );
 }

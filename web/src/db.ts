@@ -67,7 +67,7 @@ const db = {
     // list your collections here
     ['chicken-hut']: createDb('chicken-hut'),
     ['chicken-citadel']: createDb('chicken-citadel'),
-    ['space-mission']: createDb('space-mission'),
+    ['chicken-space-mission']: createDb('chicken-space-mission'),
 }
 
 const auth = getAuth(app);

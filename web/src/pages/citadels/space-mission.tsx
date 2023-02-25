@@ -1,13 +1,16 @@
 
 import React from "react";
 
+import { Citadel as CitadelComponent } from "../../components";
+import { config } from '../../config';
 
-export const SpaceMission: React.FC = () => {
+interface Props {
+    user?: any;
+}
 
+export const SpaceMission: React.FC<Props> = () => {
     return (
-        <div>
-            <h1>Space mission</h1>
-        </div>
+        <CitadelComponent config={config} />
     );
 }
 

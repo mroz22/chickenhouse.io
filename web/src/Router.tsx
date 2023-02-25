@@ -47,28 +47,6 @@ export default () => {
   );
 }
 
-// const CitadelsRouter = ({ user }) => {
-//   const location = useLocation();
-//   const { path } = useRouteMatch();
-//   return (
-//     <CitadelsWrapper>
-//       {
-//         location.pathname === '/citadels' && (
-//           <CitadelsMenu />
-//         )
-//       }
-//       <Switch>
-//         {/* <Route exact path={path}>
-//           <h3>Please select a citadel.</h3>
-//         </Route> */}
-//         <Route path={`${path}/:citadelId`}>
-//           <Citadels user={user} />
-//         </Route>
-//       </Switch>
-//     </CitadelsWrapper>
-//   );
-// }
-
 const Citadels = () => {
   const { citadelId } = useParams();
   switch (citadelId) {

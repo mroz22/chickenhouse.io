@@ -99,6 +99,11 @@ const config = {
       },
     ],
   },
+  "chicken-space-mission": {
+    name: "Chicken space mission",
+    modules: [
+    ],
+  },
 };
 
 module.exports = config;

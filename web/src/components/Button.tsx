@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import styled from 'styled-components';
 
 const Styled = styled.button`
@@ -22,14 +20,16 @@ interface Props extends React.HTMLProps<HTMLButtonElement> {
   color?: string;
 }
 
-export const Button: React.FC<Props> = ({
+export const Button = ({
   color = 'lightseagreen',
   isDisabled,
-  ...props
-}) => {
+  children,
+  ...rest
+}: Props) => {
   return (
-    <Styled type="button" {...props} disabled={isDisabled} color={color}>
-      {props.children}
+    // @ts-ignore
+    <Styled type="button" disabled={isDisabled} color={color} {...rest}>
+      {children}
     </Styled>
   );
 };
