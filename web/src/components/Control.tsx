@@ -43,6 +43,7 @@ const Actions = styled.div`
 `;
 
 export const Control: React.FC<Props> = ({ name, state, actions }) => {
+   console.log('{ name, state, actions }', { name, state, actions });
     return (
         <Wrapper>
             <Name>{name}</Name>

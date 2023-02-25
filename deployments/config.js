@@ -38,6 +38,14 @@ const config = {
         },
       },
       {
+        id: "life-monitor-1",
+        type: "life-monitor",
+        options: {
+          web: {},
+          raspberry: {},
+        },
+      },
+      {
         id: "camera-1",
         type: "camera",
         options: {
@@ -82,6 +90,14 @@ const config = {
       {
         id: "reboot-1",
         type: "reboot",
+        options: {
+          web: {},
+          raspberry: {},
+        },
+      },
+      {
+        id: "life-monitor-1",
+        type: "life-monitor",
         options: {
           web: {},
           raspberry: {},

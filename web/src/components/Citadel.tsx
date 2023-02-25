@@ -9,7 +9,7 @@ import { useDb, useAuth } from '../hooks';
 import CitadelHutImg from '../img/citadel-hut.png';
 import CitadelCitadelImg from '../img/citadel-citadel.png';
 import CitadelMarsImg from '../img/mars.png';
-
+import { LifeMonitor } from "../modules/LifeMonitor";
 
 const AppWrapper = styled.div`
   color: white;
@@ -100,6 +100,8 @@ const getComponent = (type: string) => {
             return Reboot;
         case 'camera':
             return Camera;
+        case 'life-monitor':
+            return LifeMonitor;
         default:
             return null;
     }
@@ -122,7 +124,7 @@ export const Citadel: React.FC<Props> = ({ config }) => {
         case 'chicken-citadel':
             CitadelBackground = CitadelCitadelImg;
             break;
-        case 'chicken-space-mission':
+        default:
             CitadelBackground = CitadelMarsImg;
             break;
     }

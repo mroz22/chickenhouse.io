@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 
-import { Control } from '../../components';
+import { Control } from '../components';
 
 export const Reboot = ({ dbRef, user, data }) => {
     const reboot = useCallback(() => {

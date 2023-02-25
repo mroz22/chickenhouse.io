@@ -2,11 +2,12 @@ import 'dotenv/config'
 import config from "../deployments/config";
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 import { getFirestore, connectFirestoreEmulator, doc, updateDoc } from 'firebase/firestore';
-import {initializeApp} from "firebase/app";
+import { initializeApp } from "firebase/app";
 import { isDev } from "./utils/env";
 
 import { Door } from "./modules/door";
 import { Light } from "./modules/light";
+import { LifeMonitor } from './modules/life-monitor';
 
 console.log("Starting");
 
@@ -56,7 +57,7 @@ signInWithEmailAndPassword(auth, EMAIL, PASSWORD)
 
     // after successful sign up register listeners and set defaults.
     const dataRef = doc(db, 'kurnik', KURNIK);
-    
+
     setInterval(() => {
       updateDoc(dataRef, 'timestamp', Date.now());
     }, 1000 * 60);
@@ -72,6 +73,8 @@ signInWithEmailAndPassword(auth, EMAIL, PASSWORD)
           return new Door(options);
         case "light":
           return new Light(options);
+        case "life-monitor":
+          return new LifeMonitor(options);
       }
     });
   })
