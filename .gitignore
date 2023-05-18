@@ -32,3 +32,4 @@ firestore-debug.log
 .vscode
 ui-debug.log
 .env
+.yarn
