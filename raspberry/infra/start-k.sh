@@ -15,7 +15,6 @@ git pull origin master
 git status
 
 node --version
-cd raspberry
-yarn install --production
-yarn start
+yarn workspace raspberry install --production
+yarn workspace raspberry start
 
