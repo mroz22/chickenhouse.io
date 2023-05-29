@@ -23,8 +23,8 @@ export const LifeMonitor = ({ data, user, dbRef }) => {
         const { lifeMonitor } = data;
 
         if (lifeMonitor) {
-            const diff = now - lifeMonitor;
-            return `${Math.min(Math.floor(diff / 1000), 1)} seconds ago`;
+            const diff = Math.max(now - lifeMonitor, 1);
+            return `${Math.floor(diff / 1000)} seconds ago`;
         } else {
             return 'no data';
         }
