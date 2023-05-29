@@ -16,6 +16,6 @@ git status
 
 node --version
 cd raspberry
-yarn
+yarn install --production
 yarn start
 
