@@ -6497,7 +6497,6 @@ __metadata:
   resolution: "chickenhouse.io@workspace:."
   dependencies:
     concurrently: ^6.1.0
-    firebase: ^9.22.1
     firebase-admin: ^10.0.1
     firebase-tools: ^12.2.1
     ts-node: ^10.9.1
@@ -9931,7 +9930,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"firebase@npm:^9.13.0, firebase@npm:^9.22.1":
+"firebase@npm:^9.13.0":
   version: 9.22.1
   resolution: "firebase@npm:9.22.1"
   dependencies:

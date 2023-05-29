@@ -12,6 +12,7 @@ git pull origin master
 git status
 
 node --version
-# todo probably some install script?
-yarn workspace raspberry start
+cd raspberry
+yarn
+yarn start
 
