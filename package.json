@@ -1,6 +1,7 @@
 {
-  "name": "chicken-citadel",
+  "name": "chickenhouse.io",
   "private": true,
+  "packageManager": "yarn@3.2.2",
   "workspaces": [
     "raspberry",
     "web",
@@ -10,7 +11,9 @@
   "install_firabase_local": "curl -sL firebase.tools | bash",
   "__notes__end__": "__notes__end__",
   "dependencies": {
+    "firebase": "^9.22.1",
     "firebase-admin": "^10.0.1",
+    "firebase-tools": "^12.2.1",
     "ts-node": "^10.9.1"
   },
   "engines": {
@@ -18,7 +21,7 @@
   },
   "scripts": {
     "pre-dev": "cp -rf ./deployments/config.js ./web/src/config",
-    "dev": "yarn pre-dev && concurrently \"firebase emulators:start --only auth,functions,firestore,hosting --import=./data --export-on-exit \" \"yarn workspace web start\"",
+    "dev": "yarn pre-dev && concurrently \"yarn firebase emulators:start --only auth,functions,firestore,hosting --import=./data --export-on-exit \" \"yarn workspace web start\"",
     "deploy:web": "yarn pre-dev && yarn workspace web build && firebase deploy --only hosting"
   },
   "devDependencies": {
