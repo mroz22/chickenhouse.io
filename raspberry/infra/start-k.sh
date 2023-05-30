@@ -16,5 +16,6 @@ git status
 
 node --version
 cp ./raspberry/.env ./raspberry/build
-node ./raspberry/build/raspberry/index.js
+cd ./raspberry
+node ./build/raspberry/index.js
 
