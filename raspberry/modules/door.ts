@@ -73,10 +73,12 @@ export class Door extends Module {
  setMovementFailsafeTimeout() {
     if (!this.moveTimeout) {
       this.moveTimeout = setTimeout(() => {
+      console.log(`${this.id}: onInit -> failsafe stop!`);
         this.stop();
+        this.setState({ door_position: '', door_movement: 0 });
         clearTimeout(this.moveTimeout);
         this.moveTimeout = undefined;
-      }, 1000 * 5)
+      }, 1000 * 120)
     }
   }
 
