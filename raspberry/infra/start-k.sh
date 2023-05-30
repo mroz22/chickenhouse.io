@@ -15,5 +15,6 @@ git pull origin master
 git status
 
 node --version
-yarn workspace raspberry start
+cp ./raspberry/.env ./raspberry/build
+node ./raspberry/build/raspberry/index.js
 
