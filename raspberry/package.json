@@ -13,9 +13,12 @@
     "onoff": "^6.0.3",
     "ts-node": "^10.9.1"
   },
+  "devDependencies": {
+    "typescript": "4.9.5"
+  },
   "scripts": {
     "dev": "NODE_ENV=dev nodemon --exec 'ts-node' ./index.ts",
-    "start": "NODE_ENV=prod nodemon --exec 'ts-node' ./index.ts",
-    "build:lib": "rimraf ./lib && tsc --build tsconfig.lib.json"
+    "start": "node ./build/raspberry/index.js",
+    "build": "rm -rf ./build && tsc --build tsconfig.json"
   }
 }

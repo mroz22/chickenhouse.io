@@ -1,3 +1,4 @@
+// @ts-nocheck
 import AWS from 'aws-sdk'
 import NodeWebcam from "node-webcam";
 

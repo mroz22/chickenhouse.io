@@ -1,4 +1,4 @@
-const config = {
+export const config = {
   "chicken-hut": {
     name: "Chicken hut",
     modules: [
@@ -121,5 +121,3 @@ const config = {
     ],
   },
 };
-
-module.exports = config;

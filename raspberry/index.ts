@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import config from "../deployments/config";
+import {config} from "../deployments/config";
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 import { getFirestore, connectFirestoreEmulator, doc, updateDoc } from 'firebase/firestore';
 import { initializeApp } from "firebase/app";
