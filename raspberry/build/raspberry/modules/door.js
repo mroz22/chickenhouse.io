@@ -72,10 +72,12 @@ var Door = (function (_super) {
         var _this = this;
         if (!this.moveTimeout) {
             this.moveTimeout = setTimeout(function () {
+                console.log("".concat(_this.id, ": onInit -> failsafe stop!"));
                 _this.stop();
+                _this.setState({ door_position: '', door_movement: 0 });
                 clearTimeout(_this.moveTimeout);
                 _this.moveTimeout = undefined;
-            }, 1000 * 5);
+            }, 1000 * 120);
         }
     };
     Door.prototype.moveDown = function () {
