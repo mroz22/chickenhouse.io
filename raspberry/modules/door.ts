@@ -75,7 +75,7 @@ export class Door extends Module {
       this.moveTimeout = setTimeout(() => {
       console.log(`${this.id}: onInit -> failsafe stop!`);
         this.stop();
-        this.setState({ door_position: '', door_movement: 0 });
+        this.setState({ door_movement: 0 });
         clearTimeout(this.moveTimeout);
         this.moveTimeout = undefined;
       }, 1000 * 120)
@@ -99,6 +99,9 @@ export class Door extends Module {
   }
 
   stop() {
+    if (this.moveTimeout) {
+      clearTimeout(this.moveTimeout);
+    }
     this.PIN_DOOR_MOTOR_1.writeSync(0);
     this.PIN_DOOR_MOTOR_2.writeSync(0);
     console.log(`${this.id}: stopped`);
