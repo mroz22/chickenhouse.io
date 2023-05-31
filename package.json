@@ -22,7 +22,7 @@
     "pre-dev": "cp -rf ./deployments/config.js ./web/src/config",
     "dev": "yarn pre-dev && concurrently \"yarn firebase emulators:start --only auth,functions,firestore,hosting --import=./data --export-on-exit \" \"yarn workspace web start\"",
     "deploy:web": "yarn pre-dev && yarn workspace web build && firebase deploy --only hosting",
-    "deploy:raspberry": "yarn workspace raspberry build && git commit -m \"build\" && git push origin master"
+    "deploy:raspberry": "yarn workspace raspberry build && git add . && git commit -m \"build\" && git push origin master"
   },
   "devDependencies": {
     "concurrently": "^6.1.0"

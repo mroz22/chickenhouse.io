@@ -74,7 +74,7 @@ var Door = (function (_super) {
             this.moveTimeout = setTimeout(function () {
                 console.log("".concat(_this.id, ": onInit -> failsafe stop!"));
                 _this.stop();
-                _this.setState({ door_position: '', door_movement: 0 });
+                _this.setState({ door_movement: 0 });
                 clearTimeout(_this.moveTimeout);
                 _this.moveTimeout = undefined;
             }, 1000 * 120);
@@ -95,6 +95,9 @@ var Door = (function (_super) {
         this.setState({ door_position: '' });
     };
     Door.prototype.stop = function () {
+        if (this.moveTimeout) {
+            clearTimeout(this.moveTimeout);
+        }
         this.PIN_DOOR_MOTOR_1.writeSync(0);
         this.PIN_DOOR_MOTOR_2.writeSync(0);
         console.log("".concat(this.id, ": stopped"));
